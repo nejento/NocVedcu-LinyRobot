@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="cs" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Jana Kolaja Ehlerová, Michal Puchrík, Zora Krykorková, Kristián Jacik">
+    <title>Líný robot &bullet; Noc vědců</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Manrope:wght@200;300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/sticky-footer-navbar.css">
+
+</head>
+
+<body class="d-flex flex-column h-100">
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container justify-content-start">
+            <a href="//www.fm.tul.cz" class="mr-auto" rel="external"><img src="assets/logo-fm-cmyk-cz.png" height="50 em" alt="Logo FM TUL"/></a>
+            <a href="//www.tojeit.cz" rel="external"><img src="assets/tojeit.png" height="50 em" alt="Logo ToJeIt.cz"/></a>
+            <a href="//www.nocvedcu.cz/organizace/technicka-univerzita-v-liberci" class="ml-3" rel="external"><img src="assets/nocvedcu-hero.svg" height="50 em" alt="Logo Noc vědců"/></a>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ddd;">
+        <div class="container justify-content-start">
+            <span class="navbar-brand header-font">Aktuální úkol:</span>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <span class="nav-link">Promíchej zkumavky</span>
+                </li>
+            </ul>
+            <span class="navbar-text">Navbar text with an inline element</span>
+        </div>
+    </nav>
+</header>
+
+<!-- Begin page content -->
+<main role="main">
+
+    <img id="robot_head" src="assets/Robot_game/Robot_head.svg" alt="Avatar robota"/>
+    <img id="map" src="assets/map.png" usemap="#image-map" alt="Mapa budovy"/>
+    <map name="image-map">
+        <area id="map_tk6" alt="" title="TK6" href="javascript:roomClick('tk6')" coords="2021,1003,3024,1607" shape="rect">
+    </map>
+
+</main>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">2020</span>
+        </div>
+    </footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="./js/jquery-3.5.1.js"><\/script>')</script>
+<script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="./js/imageMapResizer.min.js"></script>
+<script>
+    let currentCoords = { //Relativně k výchozím hodnotám obrázku
+        left: 1069,
+        top: 2277
+    }
+    const changeProperties = () => {
+            //TODO: Omezit volání jQuery
+
+            console.log("Called resize");
+            $('map').imageMapResize();
+
+            //První dva koordináty jsou vzdálenost zleva a vzdálenost shora
+            let originalHeight = $('#map')[0].naturalHeight,
+                originalWidth = $('#map')[0].naturalWidth,
+                currentHeight = $('#map').height(),
+                currentWidth = $('#map').width(),
+                imageTop = $('#map').offset().top,
+                imageLeft = $('#map').offset().left,
+                robotHeight = $('#robot_head').height(),
+                robotWidth = $('#robot_head').width(),
+                scale = {
+                    width: currentWidth / originalWidth,
+                    height: currentHeight / originalHeight
+                };
+
+            //console.log("originalWidth", originalWidth, "originalHeight", originalHeight, "currentWidth", currentWidth, "currentHeight", currentHeight, "scaleWidth", scale.width, "scaleHeight", scale.height, "imageTop", imageTop, "imageLeft", imageLeft);
+
+            console.log("Set coords to", currentCoords);
+            // Nejprve nastavit šířku robota, potom jeho koordináty
+            $('#robot_head').css({
+                width: (scale.width * 300) + "px",
+                left: imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2) + "px",
+                top: imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2) + "px"
+            });
+
+        },
+        roomClick = (id) => {
+            let originalHeight = $('#map')[0].naturalHeight,
+                originalWidth = $('#map')[0].naturalWidth,
+                currentHeight = $('#map').height(),
+                currentWidth = $('#map').width(),
+                imageTop = $('#map').offset().top,
+                imageLeft = $('#map').offset().left,
+                robotHeight = $('#robot_head').height(),
+                robotWidth = $('#robot_head').width(),
+                scale = {
+                    width: currentWidth / originalWidth,
+                    height: currentHeight / originalHeight
+                };
+
+            let tk6_coords = {
+                left: 2369,
+                top: 2047
+            }
+
+            console.log(scale, "currentLeft", currentCoords.left, "currentTop", currentCoords.top, "newLeft", tk6_coords.left, imageLeft + (tk6_coords.left * scale.width) - ($('#robot_head').width() / 2), "newTop", tk6_coords.top, imageTop + (tk6_coords.top * scale.height) - ($('#robot_head').height() / 2));
+            moveHead(imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), imageLeft + (tk6_coords.left * scale.width) - ($('#robot_head').width() / 2), imageTop + (tk6_coords.top * scale.height) - ($('#robot_head').height() / 2));
+            currentCoords = tk6_coords
+
+            /*$("#robot_head")[0].animate({
+                left: imageLeft + (tk6_coords.left * scale.width) - ($('#robot_head').width() / 2) + "px",
+                top: imageTop + (tk6_coords.top * scale.height) - ($('#robot_head').height() / 2) + "px"
+            }, {
+                duration: 2000,
+                done: () => {
+                    console.log("moved");
+                    //changeProperties();
+                },
+                fail: () => {
+                    console.log("Fail");
+                },
+                always: () => {
+                    console.log("always");
+                },
+                progress: () => {
+                    console.log("moving");
+                }
+            });
+            setTimeout(changeProperties, 2000);*/
+        },
+        moveHead = (oldLeft, oldTop, newLeft, newTop) => {
+            const elem = document.getElementById("robot_head");
+            let posLeft = oldLeft,
+                posTop = oldTop,
+                id = setInterval(manipulate, 5);
+
+            console.log(oldLeft < newLeft)
+
+            function manipulate() {
+                //console.log("moving", oldLeft, oldTop, newLeft, newTop, posLeft, posTop);
+                //console.log("left", oldLeft < newLeft, oldLeft > newLeft, Math.abs(newLeft - posLeft) >= 1, "top", oldTop < newTop, oldTop > newTop, Math.abs(newTop - posTop) >= 1);
+
+
+                if (oldLeft < newLeft && Math.abs(newLeft - posLeft) >= 1) {
+                    //console.log("moved left");
+                    posLeft++;
+                    elem.style.left = posLeft + "px";
+                } else if (oldLeft > newLeft && Math.abs(newLeft - posLeft) >= 1) {
+                    //console.log("moved right");
+                    posLeft--;
+                    elem.style.left = posLeft + "px";
+                } else {
+                    //console.log("set final left");
+                    posLeft = newLeft;
+                    elem.style.left = posLeft + "px";
+                }
+
+                if (oldTop < newTop && Math.abs(newTop - posTop) >= 1) {
+                    //console.log("moved top");
+                    posTop++;
+                    elem.style.top = posTop + "px";
+                } else if (oldTop > newTop && Math.abs(newTop - posTop) >= 1) {
+                    //console.log("moved down");
+                    posTop--;
+                    elem.style.top = posTop + "px";
+                } else {
+                    //console.log("set final top");
+                    posTop = newTop;
+                    elem.style.top = posTop + "px";
+                }
+
+                if (posLeft === newLeft && posTop === newTop) {
+                    console.log("interval cleared");
+                    clearInterval(id);
+                }
+            }
+        };
+
+    window.addEventListener('resize', changeProperties);
+    window.addEventListener('load', changeProperties);
+
+    $(document).ready(() => { //Při načtení dokumentu
+        window.setTimeout(changeProperties, 50);
+    });
+    console.log("Added events");
+</script>
+
+</body>
+</html>
