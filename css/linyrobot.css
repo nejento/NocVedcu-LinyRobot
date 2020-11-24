@@ -17,9 +17,11 @@ h1, .header-font {
   font-weight: 700;
 }
 
-/*main > .container {
+/*
+main > .container {
   padding: 60px 15px 0;
-}*/
+}
+*/
 
 main {
   background-color: #1d272d;
@@ -50,12 +52,22 @@ main > img#robot_head {
   line-height: 60px;
 }
 
-/*code {
-  font-size: 80%;
-}*/
+.modal-dialog {
+  position:fixed;
+  left: calc(50vw);
+}
 
+/*
+code {
+  font-size: 80%;
+}
+*/
+
+/*
 .map {
   width: auto;
   height: 300px;
   object-fit: contain;
 }
+*/
+
