@@ -77,7 +77,7 @@
         <area data-toggle="tooltip" data-placement="top" id="a01044_administrativa_kancelar" alt="a01044_administrativa_kancelar" title="Kancelář administrativy" href="javascript:roomClick('a01044_administrativa_kancelar')" coords="2256,2179,2629,2818" shape="rect">
         <area data-toggle="tooltip" data-placement="top" id="a01047_prof_nosek_kancelar" alt="a01047_prof_nosek_kancelar" title="Kancelář prof. Noska" href="javascript:roomClick('a01047_prof_nosek_kancelar')" coords="3002,2179,3391,2823" shape="rect">
         <area data-toggle="tooltip" data-placement="top" id="a01048_vedouci_mti" alt="a01048_vedouci_mti" title="Vedoucí katedry MTI" href="javascript:roomClick('a01048_vedouci_mti')" coords="3401,2179,3785,2823" shape="rect">
-        <area data-toggle="tooltip" data-placement="top" id="a01073_elektrotechnici_kancelar" alt="a01073_elektrotechnici_kancelar" title="Kancelář elektrotechniků" href="javascript:roomClick('a01073_elektrotechnici_kancelar')" coords="3304,552 3304,1054 3765,1049 3765,808 3637,798 3632,552 " shape="polygon">
+        <area data-toggle="tooltip" data-placement="top" id="a01073_elektrotechnici_kancelar" alt="a01073_elektrotechnici_kancelar" title="Kancelář elektrotechniků" href="javascript:roomClick('a01073_elektrotechnici_kancelar')" coords="3304,552,3304,1054,3765,1049,3765,808,3637,798,3632,552" shape="polygon">
         <area data-toggle="tooltip" data-placement="top" id="a01075" alt="a01075" title="Místnost 01075" href="javascript:roomClick('a01075')" coords="3432,1228,3749,1550" shape="rect">
         <area data-toggle="tooltip" data-placement="top" id="a01076" alt="a01076" title="Místnost 01076" href="javascript:roomClick('a01076')" coords="3453,1570,3780,1985" shape="rect">
         <area data-toggle="tooltip" data-placement="top" id="a01072_elektrofyzici_kancelar" alt="a01072_elektrofyzici_kancelar" title="Kancelář elektrofyziků" href="javascript:roomClick('a01072_elektrofyzici_kancelar')" coords="3642,353,4005,793" shape="rect">
@@ -102,137 +102,169 @@
 <script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="./js/imageMapResizer.min.js"></script>
 <script>
-    let currentCoords = { //Relativně k výchozím hodnotám obrázku
+    let currentRoom = "start",
+        currentCoords = { //Relativně k výchozím hodnotám obrázku
         left: 1069,
         top: 2277
     };
     const coords = {
+            start: {
+                id: -1,
+                left: 1069,
+                top: 2277
+            },
             a01081_architekt: {
+                id: 0,
                 door: {left: 1150, top: 1089},
                 room: {left: 1053, top: 711},
                 hallway: {left: 1166, top: 1115}
             },
             a01025_domovnik: {
+                id: 1,
                 door: {left: 1283, top: 1150},
                 room: {left: 1728, top: 1207},
                 hallway: {left: 1166, top: 1212}
             },
             a01020_chemie: {
+                id: 2,
                 door: {left: 1033, top: 1033},
                 room: {left: 701, top: 1396},
                 hallway: {left: 1166, top: 1452}
             },
             a01014_strojovna: {
+                id: 3,
                 door: {left: 1033, top: 1646},
                 room: {left: 803, top: 1790},
                 hallway: {left: 1166, top: 1754}
             },
             schody_vchod: {
+                id: 4,
                 door: {left: 1181, top: 2209},
                 room: {left: 1196, top: 2439},
                 hallway: {left: 1166, top: 2080}
             },
             a01042_elektrotechnici_kancelar: {
+                id: 5,
                 door: {left: 1416, top: 2250},
                 room: {left: 1560, top: 2454},
                 hallway: {left: 1411, top: 2080}
             },
             wc: {
+                id: 6,
                 door: {left: 1902, top: 2040},
                 room: {left: 1902, top: 2040},
                 hallway: {left: 1917, top: 2080}
             },
             a01043_elektrotechnici_kancelar: {
+                id: 7,
                 door: {left: 1979, top: 2240},
                 room: {left: 2050, top: 2454},
                 hallway: {left: 1979, top: 2080}
             },
             uklid_1: {
+                id: 8,
                 door: {left: 2071, top: 1979},
                 room: {left: 2076, top: 1810},
                 hallway: {left: 2076, top: 2080}
             },
             a01044_administrativa_kancelar: {
+                id: 9,
                 door: {left: 2373, top: 2275},
                 room: {left: 2408, top: 2444},
                 hallway: {left: 2367, top: 2080}
             },
             a01039_tk3: {
+                id: 10,
                 door: {left: 2398, top: 1708},
                 room: {left: 2311, top: 1222},
                 hallway: {left: 2398, top: 2080}
             },
             schody_tk3: {
+                id: 11,
                 door: {left: 2408, top: 1882},
                 room: {left: 2424, top: 1795},
                 hallway: {left: 2413, top: 2080}
             },
             a01081_archiv: {
+                id: 12,
                 door: {left: 2925, top: 1969},
                 room: {left: 2874, top: 1805},
                 hallway: {left: 2915, top: 2080}
             },
             a01047_prof_nosek_kancelar: {
+                id: 13,
                 door: {left: 3308, top: 2265},
                 room: {left: 3170, top: 2500},
                 hallway: {left: 3303, top: 2080}
             },
             a01076: {
+                id: 14,
                 door: {left: 3620, top: 1969},
                 room: {left: 3620, top: 1969},
                 hallway: {left: 3610, top: 2080}
             },
             a01048_vedouci_mti: {
+                id: 15,
                 door: {left: 3651, top: 2275},
                 room: {left: 3605, top: 2475},
                 hallway: {left: 3661, top: 2080}
             },
             a01078_tk6: {
+                id: 16,
                 door: {left: 4009, top: 1974},
                 room: {left: 4285, top: 1948},
                 hallway: {left: 3880, top: 2081}
             },
             a01077_knihovna_tk5: {
+                id: 17,
                 door: {left: 4004, top: 1483},
                 room: {left: 4167, top: 1508},
                 hallway: {left: 3880, top: 1488}
             },
             a01075: {
+                id: 18,
                 door: {left: 3753, top: 1406},
                 room: {left: 3753, top: 1406},
                 hallway: {left: 3880, top: 1386}
             },
             a01073_elektrotechnici_kancelar: {
+                id: 19,
                 door: {left: 3768, top: 890},
                 room: {left: 3462, top: 951},
                 hallway: {left: 3880, top: 920}
             },
             a01072_elektrofyzici_kancelar: {
+                id: 20,
                 door: {left: 3845, top: 762},
                 room: {left: 3799, top: 588},
                 hallway: {left: 3880, top: 808}
             },
             uklid_2: {
+                id: 21,
                 door: {left: 4975, top: 573},
                 room: {left: 4980, top: 435},
                 hallway: {left: 4975, top: 675}
             },
             a01055_tk8: {
+                id: 22,
                 door: {left: 4904, top: 1099},
                 room: {left: 4745, top: 1038},
                 hallway: {left: 4975, top: 1104}
             },
             a01053_ap11: {
+                id: 23,
                 door: {left: 5036, top: 1590},
                 room: {left: 5108, top: 1754},
                 hallway: {left: 4975, top: 1580}
             },
             a01053_rozvodna: {
+                id: 24,
                 door: {left: 4914, top: 2071},
                 room: {left: 4694, top: 2091},
                 hallway: {left: 4975, top: 2061}
             },
             a01051_ap12: {
+                id: 25,
                 door: {left: 4970, top: 2270},
                 room: {left: 5082, top: 2490},
                 hallway: {left: 4975, top: 2137}
@@ -282,59 +314,104 @@
                     height: currentHeight / originalHeight
                 };
 
-            let tk6_coords = {
-                left: 2369,
-                top: 2047
+            //console.log(coords[id]);
+            if (currentRoom === "start") {
+                //console.log("currentCords", currentCoords, "Moving to", "schody_vchod", "hallway", coords.schody_vchod.hallway);
+                moveHead(
+                    imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
+                    imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
+                    imageLeft + (coords.schody_vchod.hallway.left * scale.width) - ($('#robot_head').width() / 2), //newleft
+                    imageTop + (coords.schody_vchod.hallway.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
+                ).then(() => {
+                    console.log("Moved to hallway");
+                    currentCoords = coords.schody_vchod.hallway;
+                    //console.log("currentCords", currentCoords, "Moving to", id, "hallway", coords[id].hallway);
+                    moveHead(
+                        imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
+                        imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
+                        imageLeft + (coords[id].hallway.left * scale.width) - ($('#robot_head').width() / 2), //newleft
+                        imageTop + (coords[id].hallway.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
+                    ).then(() => {
+                        console.log("Moved to hallway, moving to door")
+                        currentCoords = coords[id].hallway;
+                        //console.log("currentCords", currentCoords, "Moving to", id, "door", coords[id].door);
+                        moveHead(
+                            imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
+                            imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
+                            imageLeft + (coords[id].door.left * scale.width) - ($('#robot_head').width() / 2), //newleft
+                            imageTop + (coords[id].door.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
+                        ).then(() => {
+                            console.log("Moved to door, moving to room");
+                            currentCoords = coords[id].door
+                            //console.log("currentCords", currentCoords, "Moving to", id, "room", coords[id].room);
+                            moveHead(
+                                imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
+                                imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
+                                imageLeft + (coords[id].room.left * scale.width) - ($('#robot_head').width() / 2), //newleft
+                                imageTop + (coords[id].room.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
+                            ).then(() => {
+                                currentCoords = coords[id].room;
+                                //console.log("currentCords", currentCoords, "Moved to room", id);
+                                currentRoom = id;
+                            });
+                        });
+                    });
+                });
             }
 
-            console.log(originalHeight, originalWidth, currentHeight, currentWidth, imageTop, imageLeft);
-            console.log(scale, "currentLeft", currentCoords.left, "currentTop", currentCoords.top, "newLeft", tk6_coords.left, imageLeft + (tk6_coords.left * scale.width) - ($('#robot_head').width() / 2), "newTop", tk6_coords.top, imageTop + (tk6_coords.top * scale.height) - ($('#robot_head').height() / 2));
-            moveHead(imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), imageLeft + (tk6_coords.left * scale.width) - ($('#robot_head').width() / 2), imageTop + (tk6_coords.top * scale.height) - ($('#robot_head').height() / 2));
-            currentCoords = tk6_coords;
+            /*let tk6_coords = {
+                left: 2369,
+                top: 2047
+            }*/
+
+            //moveHead(imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), imageLeft + (tk6_coords.left * scale.width) - ($('#robot_head').width() / 2), imageTop + (tk6_coords.top * scale.height) - ($('#robot_head').height() / 2));
+            //currentCoords = tk6_coords;
 
         },
         moveHead = (oldLeft, oldTop, newLeft, newTop) => {
-            const elem = document.getElementById("robot_head");
-            let posLeft = oldLeft,
-                posTop = oldTop,
-                id = setInterval(manipulate, 5);
+            return new Promise((resolve, reject) => {
+                const elem = document.getElementById("robot_head");
+                let posLeft = oldLeft,
+                    posTop = oldTop,
+                    id = setInterval(manipulate, 5);
 
-            console.log(oldLeft < newLeft)
+                //console.log(oldLeft < newLeft)
 
-            function manipulate() {
-                if (oldLeft < newLeft && Math.abs(newLeft - posLeft) >= 1) {
-                    //console.log("moved left");
-                    posLeft++;
-                    elem.style.left = posLeft + "px";
-                } else if (oldLeft > newLeft && Math.abs(newLeft - posLeft) >= 1) {
-                    //console.log("moved right");
-                    posLeft--;
-                    elem.style.left = posLeft + "px";
-                } else {
-                    //console.log("set final left");
-                    posLeft = newLeft;
-                    elem.style.left = posLeft + "px";
+                function manipulate() {
+                    if (oldLeft < newLeft && Math.abs(newLeft - posLeft) >= 1) {
+                        //console.log("moved left");
+                        posLeft++;
+                        elem.style.left = posLeft + "px";
+                    } else if (oldLeft > newLeft && Math.abs(newLeft - posLeft) >= 1) {
+                        //console.log("moved right");
+                        posLeft--;
+                        elem.style.left = posLeft + "px";
+                    } else {
+                        //console.log("set final left");
+                        posLeft = newLeft;
+                        elem.style.left = posLeft + "px";
+                    }
+
+                    if (oldTop < newTop && Math.abs(newTop - posTop) >= 1) {
+                        //console.log("moved top");
+                        posTop++;
+                        elem.style.top = posTop + "px";
+                    } else if (oldTop > newTop && Math.abs(newTop - posTop) >= 1) {
+                        //console.log("moved down");
+                        posTop--;
+                        elem.style.top = posTop + "px";
+                    } else {
+                        //console.log("set final top");
+                        posTop = newTop;
+                        elem.style.top = posTop + "px";
+                    }
+
+                    if (posLeft === newLeft && posTop === newTop) {
+                        clearInterval(id);
+                        resolve(true);
+                    }
                 }
-
-                if (oldTop < newTop && Math.abs(newTop - posTop) >= 1) {
-                    //console.log("moved top");
-                    posTop++;
-                    elem.style.top = posTop + "px";
-                } else if (oldTop > newTop && Math.abs(newTop - posTop) >= 1) {
-                    //console.log("moved down");
-                    posTop--;
-                    elem.style.top = posTop + "px";
-                } else {
-                    //console.log("set final top");
-                    posTop = newTop;
-                    elem.style.top = posTop + "px";
-                }
-
-                if (posLeft === newLeft && posTop === newTop) {
-                    console.log("interval cleared");
-                    clearInterval(id);
-                }
-            }
+            });
         };
 
     window.addEventListener('resize', changeProperties);
