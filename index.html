@@ -315,7 +315,12 @@
                 };
 
             //console.log(coords[id]);
-            if (currentRoom === "start") {
+            if (currentRoom === "start") { //Hráč je na startu, je potřeba ho dostat do nové místnosti
+                /**
+                 * TODO:
+                 * Robot zatím ignoruje postupnou cestu
+                 * Bude potřeba přeprogramovat, jako v případě klasického přesunu ID chodby po chodbě (po startu se robot přesouvá na schody_vchod.hallway, id = 4
+                 */
                 //console.log("currentCords", currentCoords, "Moving to", "schody_vchod", "hallway", coords.schody_vchod.hallway);
                 moveHead(
                     imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
@@ -357,6 +362,15 @@
                         });
                     });
                 });
+            } else {
+                if (coords[currentRoom].id === coords[id].id) {
+                    alert("Jsi ve stejné místnosti");
+                } else if (coords[currentRoom].id < coords[id].id) { //Pokud je ID nové místnosti větší, jak ID původní místnosti
+                    //TODO: Přesun do místnosti lze řešit rekurzivně: Jsi již v místnosti? Ne. Přesuň se do místnosti s vyšším ID
+                    alert("Půjdeš postupně po chodbě do místnosti s vyšším ID");
+                } else { //Jinak, pokud je ID nové místností nižší jak ID původní místnosti
+                    alert("Půjdeš postupně po chodbě do místnosti s nižším ID");
+                }
             }
 
             /*let tk6_coords = {
