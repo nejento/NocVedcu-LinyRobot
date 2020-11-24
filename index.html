@@ -113,9 +113,10 @@
      */
     let currentRoom = "start",
         currentCoords = { //Relativně k výchozím hodnotám obrázku
-        left: 1069,
-        top: 2277
-    };
+            left: 1069,
+            top: 2277
+        },
+        moving = false;
     const coords = {
             a01081_architekt: {
                 id: 0,
@@ -308,6 +309,7 @@
 
         },
         roomClick = (id) => {
+            if (moving) return;
             let originalHeight = $('#map')[0].naturalHeight,
                 originalWidth = $('#map')[0].naturalWidth,
                 currentHeight = $('#map').height(),
@@ -322,6 +324,7 @@
                 };
 
             //console.log(coords[id]);
+            moving = true;
             if (currentRoom === "start") { //Hráč je na startu, je potřeba ho dostat do nové místnosti
                 //console.log("currentCords", currentCoords, "Moving to", "schody_vchod", "hallway", coords.schody_vchod.hallway);
                 moveHead(
@@ -353,6 +356,7 @@
                                 console.log("Moved to room");
                                 currentCoords = coords[id].room;
                                 currentRoom = id;
+                                moving = false;
                             });
                         });
                     });
@@ -398,6 +402,7 @@
                                         console.log("Moved to room");
                                         currentCoords = coords[id].room;
                                         currentRoom = id;
+                                        moving = false;
                                     });
                                 });
                             });
@@ -456,8 +461,6 @@
                 let posLeft = oldLeft,
                     posTop = oldTop,
                     id = setInterval(manipulate, 5);
-
-                //console.log(oldLeft < newLeft)
 
                 function manipulate() {
                     if (oldLeft < newLeft && Math.abs(newLeft - posLeft) >= 1) {
