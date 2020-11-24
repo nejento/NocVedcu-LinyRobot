@@ -117,11 +117,6 @@
         top: 2277
     };
     const coords = {
-            start: {
-                id: -1,
-                left: 1069,
-                top: 2277
-            },
             a01081_architekt: {
                 id: 0,
                 door: {left: 1150, top: 1089},
@@ -240,7 +235,8 @@
                 id: 19,
                 door: {left: 3768, top: 890},
                 room: {left: 3462, top: 951},
-                hallway: {left: 3880, top: 920}
+                hallway: {left: 3880, top: 920},
+                locked: true
             },
             a01072_elektrofyzici_kancelar: {
                 id: 20,
@@ -279,6 +275,8 @@
                 hallway: {left: 4975, top: 2137}
             }
         },
+        coordsArray = Object.entries(coords),
+
         changeProperties = () => {
             //TODO: Omezit volání jQuery
 
@@ -316,8 +314,8 @@
                 currentWidth = $('#map').width(),
                 imageTop = $('#map').offset().top,
                 imageLeft = $('#map').offset().left,
-                robotHeight = $('#robot_head').height(),
-                robotWidth = $('#robot_head').width(),
+                // robotHeight = $('#robot_head').height(),
+                // robotWidth = $('#robot_head').width(),
                 scale = {
                     width: currentWidth / originalWidth,
                     height: currentHeight / originalHeight
@@ -325,11 +323,6 @@
 
             //console.log(coords[id]);
             if (currentRoom === "start") { //Hráč je na startu, je potřeba ho dostat do nové místnosti
-                /**
-                 * TODO:
-                 * Robot zatím ignoruje postupnou cestu
-                 * Bude potřeba přeprogramovat, jako v případě klasického přesunu ID chodby po chodbě (po startu se robot přesouvá na schody_vchod.hallway, id = 4
-                 */
                 //console.log("currentCords", currentCoords, "Moving to", "schody_vchod", "hallway", coords.schody_vchod.hallway);
                 moveHead(
                     imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
@@ -337,18 +330,12 @@
                     imageLeft + (coords.schody_vchod.hallway.left * scale.width) - ($('#robot_head').width() / 2), //newleft
                     imageTop + (coords.schody_vchod.hallway.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
                 ).then(() => {
-                    console.log("Moved to hallway");
+                    console.log("Moved to hallway, moving to hallway to correct room");
+                    currentRoom = "schody_vchod";
                     currentCoords = coords.schody_vchod.hallway;
-                    //console.log("currentCords", currentCoords, "Moving to", id, "hallway", coords[id].hallway);
-                    moveHead(
-                        imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
-                        imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
-                        imageLeft + (coords[id].hallway.left * scale.width) - ($('#robot_head').width() / 2), //newleft
-                        imageTop + (coords[id].hallway.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
-                    ).then(() => {
-                        console.log("Moved to hallway, moving to door")
+                    moveToDesignatedHallway(coords[currentRoom].id, coords[id].id).then(() => {
+                        console.log("Moved to hallway to correct room, moving to door");
                         currentCoords = coords[id].hallway;
-                        //console.log("currentCords", currentCoords, "Moving to", id, "door", coords[id].door);
                         moveHead(
                             imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
                             imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
@@ -356,16 +343,15 @@
                             imageTop + (coords[id].door.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
                         ).then(() => {
                             console.log("Moved to door, moving to room");
-                            currentCoords = coords[id].door
-                            //console.log("currentCords", currentCoords, "Moving to", id, "room", coords[id].room);
+                            currentCoords = coords[id].door;
                             moveHead(
                                 imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
                                 imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
                                 imageLeft + (coords[id].room.left * scale.width) - ($('#robot_head').width() / 2), //newleft
                                 imageTop + (coords[id].room.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
                             ).then(() => {
+                                console.log("Moved to room");
                                 currentCoords = coords[id].room;
-                                //console.log("currentCords", currentCoords, "Moved to room", id);
                                 currentRoom = id;
                             });
                         });
@@ -374,22 +360,95 @@
             } else {
                 if (coords[currentRoom].id === coords[id].id) {
                     alert("Jsi ve stejné místnosti");
-                } else if (coords[currentRoom].id < coords[id].id) { //Pokud je ID nové místnosti větší, jak ID původní místnosti
-                    //TODO: Přesun do místnosti lze řešit rekurzivně: Jsi již v místnosti? Ne. Přesuň se do místnosti s vyšším ID
-                    alert("Půjdeš postupně po chodbě do místnosti s vyšším ID");
-                } else { //Jinak, pokud je ID nové místností nižší jak ID původní místnosti
-                    alert("Půjdeš postupně po chodbě do místnosti s nižším ID");
+                } else {
+                    console.log("Moving to door");
+                    moveHead(
+                        imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
+                        imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
+                        imageLeft + (coords[currentRoom].door.left * scale.width) - ($('#robot_head').width() / 2), //newleft
+                        imageTop + (coords[currentRoom].door.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
+                    ).then(() => {
+                        console.log("Moved to door, moving to hallway");
+                        currentCoords = coords[currentRoom].door;
+                        moveHead(
+                            imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
+                            imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
+                            imageLeft + (coords[currentRoom].hallway.left * scale.width) - ($('#robot_head').width() / 2), //newleft
+                            imageTop + (coords[currentRoom].hallway.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
+                        ).then(() => {
+                            console.log("Moved to hallway, moving to hallway to correct room");
+                            currentCoords = coords[currentRoom].hallway;
+                            moveToDesignatedHallway(coords[currentRoom].id, coords[id].id).then(() => {
+                                console.log("Moved to hallway to correct room, moving to door");
+                                currentCoords = coords[id].hallway;
+                                moveHead(
+                                    imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
+                                    imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
+                                    imageLeft + (coords[id].door.left * scale.width) - ($('#robot_head').width() / 2), //newleft
+                                    imageTop + (coords[id].door.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
+                                ).then(() => {
+                                    console.log("Moved to door, moving to room");
+                                    currentCoords = coords[id].door;
+                                    moveHead(
+                                        imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
+                                        imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
+                                        imageLeft + (coords[id].room.left * scale.width) - ($('#robot_head').width() / 2), //newleft
+                                        imageTop + (coords[id].room.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
+                                    ).then(() => {
+                                        console.log("Moved to room");
+                                        currentCoords = coords[id].room;
+                                        currentRoom = id;
+                                    });
+                                });
+                            });
+                        });
+                    });
                 }
             }
+        },
+        moveToDesignatedHallway = (currentID, designatedID) => {
+            return new Promise((resolve, reject) => {
+                let originalHeight = $('#map')[0].naturalHeight,
+                    originalWidth = $('#map')[0].naturalWidth,
+                    currentHeight = $('#map').height(),
+                    currentWidth = $('#map').width(),
+                    imageTop = $('#map').offset().top,
+                    imageLeft = $('#map').offset().left,
+                    robotHeight = $('#robot_head').height(),
+                    robotWidth = $('#robot_head').width(),
+                    scale = {
+                        width: currentWidth / originalWidth,
+                        height: currentHeight / originalHeight
+                    };
 
-            /*let tk6_coords = {
-                left: 2369,
-                top: 2047
-            }*/
-
-            //moveHead(imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), imageLeft + (tk6_coords.left * scale.width) - ($('#robot_head').width() / 2), imageTop + (tk6_coords.top * scale.height) - ($('#robot_head').height() / 2));
-            //currentCoords = tk6_coords;
-
+                if (currentID === designatedID) {
+                    resolve(true);
+                } else if (currentID < designatedID) { //Pokud je ID nové místnosti větší, jak ID původní místnosti
+                    //Půjdeš postupně po chodbě do místnosti s vyšším ID
+                    console.log("current", currentID, "designated", designatedID);
+                    moveHead(
+                        imageLeft + (coordsArray[currentID][1].hallway.left * scale.width) - (robotWidth / 2), //oldleft
+                        imageTop + (coordsArray[currentID][1].hallway.top * scale.height) - (robotHeight / 2), //oldtop
+                        imageLeft + (coordsArray[currentID + 1][1].hallway.left * scale.width) - (robotWidth / 2), //newleft
+                        imageTop + (coordsArray[currentID + 1][1].hallway.top * scale.height) - (robotHeight / 2) //oldtop
+                    ).then(() => {
+                        currentCoords = coordsArray[currentID + 1][1].hallway;
+                        moveToDesignatedHallway(currentID + 1, designatedID).then(() => resolve(true));
+                    });
+                } else { //Jinak, pokud je ID nové místností nižší jak ID původní místnosti
+                    //Půjdeš postupně po chodbě do místnosti s nižším ID
+                    console.log("current", currentID, "designated", designatedID);
+                    moveHead(
+                        imageLeft + (coordsArray[currentID][1].hallway.left * scale.width) - (robotWidth / 2), //oldleft
+                        imageTop + (coordsArray[currentID][1].hallway.top * scale.height) - (robotHeight / 2), //oldtop
+                        imageLeft + (coordsArray[currentID - 1][1].hallway.left * scale.width) - (robotWidth / 2), //newleft
+                        imageTop + (coordsArray[currentID - 1][1].hallway.top * scale.height) - (robotHeight / 2) //oldtop
+                    ).then(() => {
+                        currentCoords = coordsArray[currentID - 1][1].hallway;
+                        moveToDesignatedHallway(currentID - 1, designatedID).then(() => resolve(true));
+                    });
+                }
+            });
         },
         moveHead = (oldLeft, oldTop, newLeft, newTop) => {
             return new Promise((resolve, reject) => {
