@@ -418,7 +418,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <img class="mx-auto d-block" src="./assets/robot_game/schody_vchod/robot_utika.svg"/>
+                    <img class="mx-auto d-block" src="assets/robot_game/robot_utika.svg"/>
                 </div>
             </div>
             <div class="row">
@@ -1085,7 +1085,7 @@
                     <div class="speech-bubble left robot">
                         <p>Co jsi zač?</p>
                     </div>
-                    <div class="speech-bubble right">
+                    <div class="speech-bubble right robot">
                         <p>Jsem M-3F0, expert na měření fyzikálních veličin. Dokážu změřit více než dva tisíce různých fyzikálních veličin a vychrlit na vás tolik dat, že vám z toho půjde hlava kolem! A samozřejmě vám spočítám i nejistoty, protože všichni víme, že fyziky vlastně ani nezajímá, co vlastně změřili, ale jak moc nepřesně to změřili.</p>
                     </div>
                     <div class="speech-bubble left robot">
@@ -1348,7 +1348,7 @@
 </template>
 <template id="template_a01053_ap11">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title">Úklidová místnost</h5>
+        <h5 class="modal-title">Laboratoř elektroniky AP11</h5>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -1357,30 +1357,59 @@
                     <img class="float-right flip" src="./assets/robot_game/robot.svg"/>
                 </div>
                 <div class="col-6">
-                    <div class="speech-bubble right">
-                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
+                    <div class="speech-bubble right robot">
+                        <p>Pst. Hej, ty.</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
+                        <p>A…ano? Ty vypadáš dost děsivě…</p>
                     </div>
-                    <div class="speech-bubble right">
-                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
+                    <div class="speech-bubble right robot">
+                        <p>Nechceš nějakej proud?</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>Ale ne…</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                        <p>Tak do toho fakt nejdu, kámo. <strong>PRYČ!</strong></p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                    <img src="./assets/robot_game/a01053_ap11/velky_zly_zdroj.svg"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="a01053_ap11_outcome">Utéct</button>
+    </div>
+</template>
+<template id="template_a01053_ap11_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Laboratoř elektroniky AP11</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Robot radši vzal nohy na ramena a schoval se na druhé straně budovy. Chvíli trvalo, než se odvážil vylézt ven.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/robot_utika.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="speech-bubble top robot">
+                    <p>S nějakým divným dealerem proudu nechci nic mít!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-danger text-center" role="alert">
+                    Ztrácíte <strong>1</strong> den času
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-delay="2000" data-dismiss="modal">Vylézt zpět</button>
     </div>
 </template>
 <template id="template_a01051_ap12">
