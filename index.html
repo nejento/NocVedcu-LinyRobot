@@ -741,7 +741,7 @@
 </template>
 <template id="template_a01081_archiv">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title">Úklidová místnost</h5>
+        <h5 class="modal-title">Archiv</h5>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -750,30 +750,50 @@
                     <img class="float-right flip" src="./assets/robot_game/robot.svg"/>
                 </div>
                 <div class="col-6">
-                    <div class="speech-bubble right">
-                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
-                    </div>
                     <div class="speech-bubble left robot">
-                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
-                    </div>
-                    <div class="speech-bubble left robot">
-                        <p>Ale ne…</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                        <p>Hmm, archiv. Jsou tu staré diplomky. Tohle zní zajímavě: „Efektivita robotických nástrojů“.</p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                    <img src="./assets/robot_game/a01081_archiv/knihovna_s_diplomkami.svg"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="a01081_archiv_outcome">Přečíst diplomovou práci</button>
+    </div>
+</template>
+<template id="template_a01081_archiv_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Archiv</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Robot se začetl, po chvíli však znechuceně diplomku odhodil.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/a01081_archiv/robot_cte_diplomku.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="speech-bubble top robot">
+                    <p>To je ale nechutné. Ti lidé jsou vážně sadisti. A ještě mu za tohle dali titul!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-danger text-center" role="alert">
+                    Ztrácíte <strong>1</strong> den času
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-delay="2000" data-dismiss="modal">Zavřít diplomovou práci</button>
     </div>
 </template>
 <template id="template_a01044_administrativa_kancelar">
