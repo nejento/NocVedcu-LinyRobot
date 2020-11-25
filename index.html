@@ -28,7 +28,7 @@
 
     <!-- Custom styles for this template -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Manrope:wght@200;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500;700&family=Manrope:wght@200;300;400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/linyrobot.css">
 
@@ -283,11 +283,20 @@
                     <img class="float-right flip" src="./assets/robot_game/robot.svg"/>
                 </div>
                 <div class="col-6">
+                    <div class="speech-bubble right">
+                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
+                    </div>
                     <div class="speech-bubble left robot">
-                        <p>Čus</p>
+                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
                     </div>
                     <div class="speech-bubble right">
-                        <p>Jak to de?</p>
+                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
+                    </div>
+                    <div class="speech-bubble left robot">
+                        <p>Ale ne…</p>
+                    </div>
+                    <div class="speech-bubble right">
+                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
                     </div>
                 </div>
                 <div class="col">
@@ -296,8 +305,45 @@
             </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+    <div class="modal-footer justify-content-center">
+        <button id="uklid_1_closedialog" type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+    </div>
+</template>
+<template id="template_uklid_1_outcome">
+    <div class="modal-header">
+        <h5 class="modal-title">Úklidová místnost</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img class="float-right flip" src="./assets/robot_game/robot.svg"/>
+                </div>
+                <div class="col-6">
+                    <div class="speech-bubble right">
+                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
+                    </div>
+                    <div class="speech-bubble left robot">
+                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
+                    </div>
+                    <div class="speech-bubble right">
+                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
+                    </div>
+                    <div class="speech-bubble left robot">
+                        <p>Ale ne…</p>
+                    </div>
+                    <div class="speech-bubble right">
+                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Uklidit</button>
     </div>
 </template>
 <template id="template_a01042_elektrotechnici_kancelar">
@@ -1188,6 +1234,7 @@
             }
         },
         showModal = (id) => {
+            console.log('opening modal', id);
             let clone = document.getElementById('template_' + id).content.cloneNode(true),
                 timer = 0;
             $('#level-modal-content').empty();
@@ -1195,10 +1242,20 @@
             $('#modal').modal('show');
             $('#modal').on('shown.bs.modal', (e) => {
                 console.log("called bubble");
-                $('#modal').find('.speech-bubble').each((index, element) => {
+                $('#modal').find('.speech-bubble').each((id, element) => {
                     setTimeout(() => $(element).addClass("bubble-show"), timer);
                     //$(element).addClass("bubble-show").delay(timer);
                     timer += 500;
+                });
+                $('#level-modal-content').find('button[data-nextmodal]').each((id, element) => {
+                    console.log('found', element);
+                    console.log($('#modal button[data-nextmodal]'));
+                    $('#modal button[data-nextmodal]').one('click', () => {
+                        $('#modal').modal('hide');
+                        $('#modal').one('hidden.bs.modal', (e) => {
+                            showModal($(element).data('nextmodal'));
+                        });
+                    });
                 });
             });
 
