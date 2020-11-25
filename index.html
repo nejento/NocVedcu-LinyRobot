@@ -910,7 +910,7 @@
 </template>
 <template id="template_a01048_vedouci_mti">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title">Úklidová místnost</h5>
+        <h5 class="modal-title">Vedoucí katedry MTI</h5>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -919,30 +919,45 @@
                     <img class="float-right flip" src="./assets/robot_game/robot.svg"/>
                 </div>
                 <div class="col-6">
-                    <div class="speech-bubble right">
-                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
-                    </div>
                     <div class="speech-bubble left robot">
-                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
-                    </div>
-                    <div class="speech-bubble left robot">
-                        <p>Ale ne…</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                        <p>No vida, tady je konečně docela klid. Uvelebím se támhle v koutě vedle té plechové bedny…</p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                    <img class="img-fluid" src="./assets/robot_game/a01048_vedouci_mti/zdroj_v_koute.svg"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="a01048_vedouci_mti_outcome">Uvelebit se</button>
+    </div>
+</template>
+<template id="template_a01048_vedouci_mti_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Vedoucí katedry MTI</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Ona „plechová bedna“ byl ve skutečnosti zdroj, který někdo velmi chytře zapomněl vypnout a vypojit z něj kabel. Jakmile na něj robot šlápnul, spojil se obvod a robot na vlastní kastli pocítil, jaké to je „dostat dvě stě dvacet.“</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/a01048_vedouci_mti/robot_je_zkratovan_zdrojem.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-danger text-center" role="alert">
+                    Ztrácíte <strong>2</strong> dny času
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-delay="4000" data-dismiss="modal">Vrátit se na misi</button>
     </div>
 </template>
 <template id="template_a01073_elektrotechnici_kancelar">
@@ -1399,6 +1414,7 @@
      * Cílová místnost musí být nejprve uzamčena! Cílová místnost: a01073_elektrotechnici_kancelar
      * Omezit volání jQuery
      * Tuto místnost jsi již navštívil
+     * Možná přidat img-fluid ke všem modalům, otestovat chování na tabletu
      */
     let currentRoom = "start",
         currentCoords = { //Relativně k výchozím hodnotám obrázku
