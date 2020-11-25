@@ -778,7 +778,7 @@
 </template>
 <template id="template_a01044_administrativa_kancelar">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title">Úklidová místnost</h5>
+        <h5 class="modal-title">Kancelář administrativní práce</h5>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -788,29 +788,58 @@
                 </div>
                 <div class="col-6">
                     <div class="speech-bubble right">
-                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
+                        <p>Zdravím tě, robote. Mám tady krabici starých dokumentů, potřebuji, abys je skartoval. </p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
+                        <p>To jako vážně? Jsem mnohem vyspělejší a chytřejší stroj než nějaká skartovačka. Vážně mám dělat tohle?</p>
                     </div>
                     <div class="speech-bubble right">
-                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
+                        <p>Jo, chytrý rozhodně jsi. Jako rádio. Tak už neodmlouvej a dej se do toho. </p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>Ale ne…</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                        <p>Ach jo…</p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                    <img src="./assets/robot_game/a01044_administrativa_kancelar/urednice.svg"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="a01044_administrativa_kancelar_outcome">Skartovat</button>
+    </div>
+</template>
+<template id="template_a01044_administrativa_kancelar_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Kancelář administrativní práce</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Líný robot začal skartovat dokumentaci. Kdyby šlo o pár listů, bylo by to hotové raz dva, ale byla toho celá bedna.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/a01044_administrativa_kancelar/robot_skartuje.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="speech-bubble top robot">
+                    <p>Mohli to spálit, dát sežrat psovi, rozpustit v kyselině u tý chemikářky o pár dveří dál, nebo to dát na záchod místo toaletního papíru… ale ne, oni s tím musejí otravovat mě.”</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-danger text-center" role="alert">
+                    Ztrácíte <strong>1</strong> den času
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-delay="2000" data-dismiss="modal">Dokončit</button>
     </div>
 </template>
 <template id="template_a01047_prof_nosek_kancelar">
