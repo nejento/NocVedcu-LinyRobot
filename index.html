@@ -254,7 +254,7 @@
 </template>
 <template id="template_schody_vchod">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title">Úklidová místnost</h5>
+        <h5 class="modal-title">Schodiště</h5>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -263,30 +263,56 @@
                     <img class="float-right flip" src="./assets/robot_game/robot.svg"/>
                 </div>
                 <div class="col-6">
-                    <div class="speech-bubble right">
-                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
+                    <div class="speech-bubble right robot">
+                        <p>Snad nechceš jít na Ústav nových technologií?</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
+                        <p>Chci se tam nechat pozorovat. Jak spím.</p>
                     </div>
-                    <div class="speech-bubble right">
-                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
-                    </div>
-                    <div class="speech-bubble left robot">
-                        <p>Ale ne…</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                    <div class="speech-bubble right robot">
+                        <p>Bacha, kamaráde, tam se s roboty dějí věci. Byl tam někdo s matematickým modelem a pak ti, co ho pochopili, už nikdy nepřišli.</p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                    <img src="./assets/robot_game/schody_vchod/robot_u_schodu.svg"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="schody_vchod_outcome">Utéct</button>
+    </div>
+</template>
+<template id="template_schody_vchod_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Schodiště</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Líný robot urychleně zařadil zpátečku.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/schody_vchod/robot_utika.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="speech-bubble top robot">
+                    <p>Kdo ví, co by se tam se mnou stalo! Ale pokoj by mi tam určitě nedali!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-info text-center" role="alert">
+                    Neztrácíte <strong>žádný</strong> čas
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Dokončit</button>
     </div>
 </template>
 <template id="template_wc">
@@ -873,7 +899,39 @@
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="uklid_2_outcome">Uklidit</button>
+    </div>
+</template>
+<template id="template_uklid_2_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Úklidová místnost</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Líný robot velmi neochotně přepnul na svůj úklidový režim a začal uklízet chodbu.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/uklid/robot_uklizi.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="speech-bubble top robot">
+                    <p>Hmpf… prej usnadnit práci… dřít tady za ně, to chtějí abych dělal!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-danger text-center" role="alert">
+                    Ztrácíte <strong>0,5</strong> dne času
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-delay="1000" data-dismiss="modal">Dokončit</button>
     </div>
 </template>
 <template id="template_a01055_tk8">
@@ -1112,6 +1170,7 @@
      * Přidat uvítací modal
      * Cílová místnost musí být nejprve uzamčena! Cílová místnost: a01073_elektrotechnici_kancelar
      * Omezit volání jQuery
+     * Tuto místnost jsi již navštívil
      */
     let currentRoom = "start",
         currentCoords = { //Relativně k výchozím hodnotám obrázku
