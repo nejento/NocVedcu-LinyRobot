@@ -634,7 +634,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/a01043_elektrotechnici_kancelar/dvere.svg"/>
+                    <img src="assets/robot_game/dvere.svg"/>
                 </div>
             </div>
         </div>
@@ -1364,7 +1364,7 @@
 </template>
 <template id="template_a01051_ap12">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title">Úklidová místnost</h5>
+        <h5 class="modal-title">Posluchárna AP12</h5>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -1374,29 +1374,52 @@
                 </div>
                 <div class="col-6">
                     <div class="speech-bubble right">
-                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
+                        <p>…a když zapojíte bipolární tranzistor do takového obvodu, můžete ho použít jako…</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
-                    </div>
-                    <div class="speech-bubble left robot">
-                        <p>Ale ne…</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                        <p>Slyším správně, že tam mají přednášku z elektrotechniky? Možná bych se tam mohl vloudit mezi lidi a chvíli si odpočinout, snad po mě nebude nikdo nic chtít…</p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                    <img src="./assets/robot_game/dvere.svg"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="a01051_ap12_outcome">Odpočinout si u přednášky</button>
+    </div>
+</template>
+<template id="template_a01051_ap12_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Posluchárna AP12</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Nejprve se to zdálo jako dobrý nápad. Přednáška byla zajímavá, ale robot se omylem přepnul do režimu spánku.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/a01051_ap12/robot_spi_na_zidli.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Probudila ho až uklízečka, která vyhrožovala, že ho zamkne, jestli se odtamtud rychle neklidí pryč. A rozespalý robot se tak vyklopýtal ven.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-danger text-center" role="alert">
+                    Ztrácíte <strong>1</strong> den času
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-delay="2000" data-dismiss="modal">Vyklopýtat se ven</button>
     </div>
 </template>
 
