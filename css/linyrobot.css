@@ -74,8 +74,25 @@ main > img#robot_head {
   margin-left: 5em;
 }
 
-.speech-bubble p {
+.speech-bubble.top {
+  /*margin: auto 0.5em;*/
+  text-align: center;
+  max-width: 50em;
+  margin: 1em auto 0;
+}
+
+.speech-bubble.left p {
   margin: auto 0.5em;
+}
+
+.speech-bubble.right p {
+  margin: auto 0.5em;
+  text-align: right;
+}
+
+.speech-bubble.top p {
+  margin: auto 0.5em;
+  text-align: center;
 }
 
 .speech-bubble.left:after {
@@ -106,6 +123,20 @@ main > img#robot_head {
   margin-right: -0.8em;
 }
 
+.speech-bubble.top:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 0.8em solid transparent;
+  border-bottom-color: #6a6a6a;
+  border-top: 0;
+  margin-left: -0.8em;
+  margin-top: -0.8em;
+}
+
 .robot {
   font-family: 'Inconsolata', monospace;
   font-weight: 500;
@@ -113,6 +144,17 @@ main > img#robot_head {
 
 .bubble-show {
   opacity: 1;
-  transition: opacity 0.3s ease-in, transform 0.3s ease-in;
   transform: translateY(-10px);
+  transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+}
+
+#level-modal-content .modal-footer button {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-footer button.show {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transition: opacity 0.3s ease-in;
 }
