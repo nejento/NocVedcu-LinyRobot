@@ -233,7 +233,7 @@
             </div>
             <div class="row">
                 <div class="alert alert-danger text-center" role="alert">
-                    Ztrácíte <strong>1</strong> dny času
+                    Ztrácíte <strong>1</strong> den času
                 </div>
             </div>
         </div>
@@ -1026,7 +1026,7 @@
         <button type="button" class="btn btn-primary" data-delay="4000" data-dismiss="modal">Vrátit se na misi</button>
     </div>
 </template>
-<template id="template_a01073_elektrotechnici_kancelar">
+<template id="template_a01073_elektrotechnici_kancelar_final">
     <div class="modal-header justify-content-center">
         <h5 class="modal-title">Úklidová místnost</h5>
     </div>
@@ -1062,7 +1062,132 @@
     <div class="modal-footer justify-content-center">
         <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
     </div>
+</template>             <!-- Odemčená místnost -->
+<template id="template_a01073_elektrotechnici_kancelar_nokey">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Kancelář elektrotechniků</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img class="float-right flip" src="./assets/robot_game/robot.svg"/>
+                </div>
+                <div class="col-6">
+                    <div class="speech-bubble left robot">
+                        <p>Kancelář elektrotechniků? Slyšel jsem, že by se sem dalo možná někde v rohu schovat…</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="./assets/robot_game/dvere.svg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-nextmodal="a01073_elektrotechnici_kancelar_nokey_outcome">Otevřít dveře</button>
+    </div>
+</template>             <!-- Nemáme klíč a jsme v místnosti poprvé -->
+<template id="template_a01073_elektrotechnici_kancelar_nokey_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Kancelář elektrotechniků</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Zatáhnul jsi za kliku, ale dveře jsou zamčené.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/keys/zamek.svg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Jít hledat klíč</button>
+    </div>
 </template>
+<template id="template_a01073_elektrotechnici_kancelar_visited_nokey">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Kancelář elektrotechniků</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Stále nemáš po ruce klíč, kterým bys odemkl dveře.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/keys/zamek.svg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Pokračovat v hledání klíče</button>
+    </div>
+</template>     <!-- Nemáme klíč a v místnosti jsme již byli -->
+<template id="template_a01073_elektrotechnici_kancelar_haskey">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Kancelář elektrotechniků</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img class="float-right flip" src="./assets/robot_game/robot.svg"/>
+                </div>
+                <div class="col-6">
+                    <div class="speech-bubble left robot">
+                        <p>Kancelář elektrotechniků? Slyšel jsem, že by se sem dalo možná někde v rohu schovat…</p>
+                    </div>
+                    <div class="speech-bubble left robot">
+                        <p>Vypadá to, že je zamčeno. Nemohl by sem padnout ten klíč, co jsem našel?</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="./assets/robot_game/dvere.svg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-nextmodal="a01073_elektrotechnici_kancelar_final">Zkusit odemknout dveře</button>
+    </div>
+</template>            <!-- Máme klíč a v místnosti jsme ještě nebyli -->
+<template id="template_a01073_elektrotechnici_kancelar_visited_haskey">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Kancelář elektrotechniků</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img class="float-right flip" src="./assets/robot_game/robot.svg"/>
+                </div>
+                <div class="col-6">
+                    <div class="speech-bubble left robot">
+                        <p>Ten klíč, co jsem našel vypadá, že by mohl tyhle dveře odemknout</p>
+                    </div>
+                    <div class="speech-bubble left robot">
+                        <p>Docela by mi bodlo, kdybych se už mohl někde složit…</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="./assets/robot_game/dvere.svg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-nextmodal="a01073_elektrotechnici_kancelar_final">Zkusit odemknout dveře</button>
+    </div>
+</template>    <!-- Máme klíč a v místnosti jsme již byli -->
 <template id="template_a01075">
     <div class="modal-header justify-content-center">
         <h5 class="modal-title">Místnost 01075</h5>
@@ -1602,7 +1727,6 @@
      * TODO:
      * Přidat časomíru, jak dlouho trvalo od začátku hru dohrát
      * Přidat animaci chůze
-     * Přidat modaly s úlohami
      * Přidat uvítací modal
      * Cílová místnost musí být nejprve uzamčena! Cílová místnost: a01073_elektrotechnici_kancelar
      * Omezit volání jQuery
@@ -1614,7 +1738,9 @@
             left: 1069,
             top: 2277
         },
-        moving = false;
+        moving = false,
+        finalVisited = false,
+        keyFound = false;
     const coords = {
             a01081_architekt: {
                 id: 0,
@@ -1754,8 +1880,7 @@
                 door: {left: 3768, top: 890},
                 room: {left: 3462, top: 951},
                 hallway: {left: 3880, top: 920},
-                hasKey: false,
-                locked: true
+                hasKey: false
             },
             a01072_elektrofyzici_kancelar: {
                 id: 20,
@@ -1950,11 +2075,54 @@
             }
         },
         showModal = (id) => {
-            console.log('opening modal', id);
-            let clone = document.getElementById('template_' + id).content.cloneNode(true),
+            let roomID = id;
+            /*
+            * Nemáme klíč a v místnosti jsme nebyli -> a01073_elektrotechnici_kancelar_nokey
+            * Nemáme klíč a v místnosti jsme byli   -> a01073_elektrotechnici_kancelar_visited_nokey
+            * Máme klíč a v místnosti jsme nebyli   -> a01073_elektrotechnici_kancelar_haskey
+            * Máme klíč a v místnosti jsme byli     -> a01073_elektrotechnici_kancelar_visited_haskey
+            *
+            * finalVisited = false
+            * keyFound = false
+            * */
+            if (id === "a01073_elektrotechnici_kancelar") {
+                if (keyFound) {
+                    if (finalVisited) {
+                        //Máme klíč a v místnosti jsme byli
+                        roomID = 'a01073_elektrotechnici_kancelar_visited_haskey';
+                    } else {
+                        //Máme klíč a v místnosti jsme nebyli
+                        roomID = 'a01073_elektrotechnici_kancelar_haskey';
+                        finalVisited = true;
+                    }
+                } else {
+                    if (finalVisited) {
+                        //Nemáme klíč a v místnosti jsme byli
+                        roomID = 'a01073_elektrotechnici_kancelar_visited_nokey';
+                    } else {
+                        //Nemáme klíč a v místnosti jsme nebyli
+                        roomID = 'a01073_elektrotechnici_kancelar_nokey';
+                        finalVisited = true;
+                    }
+                }
+            }
+
+            console.log('opening modal', roomID);
+            let clone = document.getElementById('template_' + roomID).content.cloneNode(true),
                 timer = 0;
             $('#level-modal-content').empty();
             $('#level-modal-content').append(clone);
+
+            if (id !== "a01073_elektrotechnici_kancelar") {
+                if (!keyFound && coords[id].hasKey) {
+                    keyFound = true;
+                    console.log("Found key!");
+                    $('#level-modal-content').find('.modal-body').each((id, element) => {
+                        $(element).append('<div class="alert alert-success text-center" role="alert"><img class="mr-2" style="width: 2em; height: auto" src="./assets/robot_game/keys/klic.svg">Před místností jsi objevil klíč! ' + (finalVisited ? "Nebude fungovat na ty zamčené dveře?" : "No jo, ale co odemyká?") + '</div>');
+                    });
+                }
+            }
+
             $('#modal').modal('show');
             $('#modal').on('shown.bs.modal', (e) => {
                 console.log("called bubble");
@@ -1964,8 +2132,8 @@
                     timer += 500;
                 })
                 $('#level-modal-content').find('button[data-nextmodal]').each((id, element) => {
-                    console.log('found', element);
-                    console.log($('#modal button[data-nextmodal]'));
+                    //console.log('found', element);
+                    //console.log($('#modal button[data-nextmodal]'));
                     $('#modal button[data-nextmodal]').one('click', () => {
                         $('#modal').modal('hide');
                         $('#modal').one('hidden.bs.modal', (e) => {
@@ -1977,7 +2145,6 @@
                     setTimeout(() => $(element).addClass("show"), timer + ($(element).data('delay') ? $(element).data('delay') : 0));
                 });
             });
-
         },
         moveToDesignatedHallway = (currentID, designatedID) => {
             return new Promise((resolve, reject) => {
@@ -2082,17 +2249,19 @@
         roomClick(event.target.id);
     });
 
+    //Vygenerování náhodné pozice klíče
+    let rand = coordsArray[Math.floor(Math.random() * possibleKeys.length)][0];
+    coords[rand].hasKey = true;
+    console.log("room with key", rand);
+    //coords[coordsArray[Math.floor(Math.random() * possibleKeys.length)][0]].hasKey = true;
+
     //Při načtení dokumentu
     document.addEventListener('DOMContentLoaded', () => {
         window.setTimeout(changeProperties, 50);
         $('[rel="tooltip"]').tooltip();
         $('[data-toggle="tooltip"]').tooltip({trigger: "hover"});
+        console.log("Events added");
     });
-
-    //Vygenerování náhodné pozice klíče
-    coords[coordsArray[Math.floor(Math.random() * possibleKeys.length)][0]].hasKey = true;
-
-    console.log("Added events");
 
 
 </script>
