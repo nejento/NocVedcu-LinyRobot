@@ -56,6 +56,7 @@ main > img#robot_head {
   transform: scaleX(-1);
 }
 
+/* Speech bubbles */
 .speech-bubble {
   position: relative;
   background: #6a6a6a;
@@ -74,7 +75,7 @@ main > img#robot_head {
   margin-left: 5em;
 }
 
-.speech-bubble.top {
+.speech-bubble.top, .speech-bubble.bottom {
   /*margin: auto 0.5em;*/
   text-align: center;
   max-width: 50em;
@@ -90,7 +91,7 @@ main > img#robot_head {
   text-align: right;
 }
 
-.speech-bubble.top p {
+.speech-bubble.top p, .speech-bubble.bottom p {
   margin: auto 0.5em;
   text-align: center;
 }
@@ -137,6 +138,20 @@ main > img#robot_head {
   margin-top: -0.8em;
 }
 
+.speech-bubble.bottom:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 0.8em solid transparent;
+  border-top-color: #6a6a6a;
+  border-bottom: 0;
+  margin-left: -0.8em;
+  margin-bottom: -0.8em;
+}
+
 .robot {
   font-family: 'Inconsolata', monospace;
   font-weight: 500;
@@ -148,6 +163,7 @@ main > img#robot_head {
   transition: opacity 0.3s ease-in, transform 0.3s ease-in;
 }
 
+/* Modal buttons */
 #level-modal-content .modal-footer button {
   opacity: 0;
   pointer-events: none;
