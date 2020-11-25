@@ -1295,7 +1295,7 @@
 </template>
 <template id="template_a01078_tk6">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title">Úklidová místnost</h5>
+        <h5 class="modal-title">Počítačová učebna TK6</h5>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -1305,29 +1305,67 @@
                 </div>
                 <div class="col-6">
                     <div class="speech-bubble right">
-                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
+                        <p>Robote, nadiktuju ti sérii příkazů a ty je provedeš.</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
+                        <p>A proč jako? Jsem snad cvičený pes?</p>
                     </div>
                     <div class="speech-bubble right">
-                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
+                        <p>Neodmlouvej. Jakožto robot se na tebe vztahují Asimovovy zákony robotiky. A ten druhý říká, že robot musí vždy poslechnout člověka, pokud tím neohrozí život jiného člověka.</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>Ale ne…</p>
+                        <p>No dobrá, chytráku, dostal jsi mě. Tak co mám udělat? </p>
                     </div>
                     <div class="speech-bubble right">
-                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                        <p>OPAKUJ<br>
+                            VLEVO-VBOK<br>
+                            DOKUD NENÍ ZEĎ<br>
+                            KROK<br>
+                            KONEC<br>
+                            KONEC
+                        </p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                    <img src="./assets/robot_game/a01078_tk6/informatik.svg"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="a01078_tk6_outcome">Vykonat kód</button>
+    </div>
+</template>
+<template id="template_a01078_tk6_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Počítačová učebna TK6</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Kéž by student chápal skriptování tak dobře, jako Asimovovy zákony robotiky. Díky tomuto skriptu zacyklenému skončil robot v nekonečné smyčce obcházení místnosti kolem dokola.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/a01078_tk6/robot_v_nekonecne_smycce.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Až o hodně později ho osvobodil kolemjdoucí profesor, který mu přikázal skript ukončit. Nutno podotknout, že u toho jen stěží zadržoval smích.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-danger text-center" role="alert">
+                    Ztrácíte <strong>3</strong> dny času
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-delay="6000" data-dismiss="modal">Vrátit se ze smyčky na misi</button>
     </div>
 </template>
 <template id="template_a01053_rozvodna">
