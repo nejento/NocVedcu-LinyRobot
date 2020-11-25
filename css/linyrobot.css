@@ -52,10 +52,26 @@ main > img#robot_head {
   line-height: 60px;
 }
 
-.modal-dialog {
-  position:fixed;
-  left: calc(50vw);
+/*.modal-dialog {
+  position: fixed;
+  !*left: calc(50vw);*!
+}*/
+
+/*
+.fade:not(.show) {
+  pointer-events: none;
 }
+*/
+
+/*.modal {
+  visibility: hidden;
+}*/
+
+
+/*.show{
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}*/
 
 /*
 code {

@@ -89,7 +89,8 @@
         <area rel="tooltip" data-placement="top" id="a01053_ap11" alt="a01053_ap11" title="Učebna AP11" coords="5043,1437,5437,2179" shape="rect">
         <area rel="tooltip" data-placement="top" id="a01051_ap12" alt="a01051_ap12" title="Posluchárna AP12" coords="4547,2174,5463,2839" shape="rect">
     </map>
-    <div id="modal" class="modal fade modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+    <!-- modal-xl modal-dialog-centered -->
+    <div id="modal" class="modal fade modal-dialog-scrollable" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -859,7 +860,8 @@
             left: 1069,
             top: 2277
         },
-        moving = false;
+        moving = false,
+        lastModalWidth = null;
     const coords = {
             a01081_architekt: {
                 id: 0,
@@ -1138,6 +1140,7 @@
             } else {
                 if (coords[currentRoom].id === coords[id].id) {
                     alert("Jsi ve stejné místnosti"); //Předělat na toast
+                    moving = false;
                 } else {
                     console.log("Moving to door");
                     moveHead(
@@ -1194,11 +1197,31 @@
             }
         },
         showModal = (id) => {
+            //console.log($('#modal .modal-dialog')[0].offsetWidth / 2);
             let clone = document.getElementById('template_' + id).content.cloneNode(true);
             $('#level-modal-body').empty();
             $('#level-modal-body').append(clone);
-            $('.modal-dialog').css({left: 'calc(50vw - ' + ($('#modal .modal-dialog')[0].offsetWidth / 2) + 'px)'});
+
+            console.log($('#modal .modal-dialog')[0].offsetWidth / 2);
+            //$('#modal').css({left: 'calc(50vw - ' + ($('#modal .modal-dialog')[0].offsetWidth / 2) + 'px)'});
+            console.log($('#modal .modal-dialog')[0].offsetWidth / 2);
             $('#modal').modal('show');
+            console.log($('#modal .modal-dialog')[0].offsetWidth / 2);
+            /*setTimeout(() => {
+                $('#modal').css({left: 'calc(50vw - ' + ($('#modal .modal-dialog')[0].offsetWidth / 2) + 'px)'});
+                console.log("   reset", $('#modal .modal-dialog')[0].offsetWidth / 2);
+            }, 200);*/
+            console.log($('#modal .modal-dialog')[0].offsetWidth / 2);
+            /*$('#modal').on('hidden.bs.modal', function (e) {
+                $('#modal').css({left: 'calc(50vw - ' + ($('#modal .modal-dialog')[0].offsetWidth / 2) + 'px)'})
+            });*/
+
+            console.log($('#modal .modal-dialog')[0].offsetWidth / 2);
+            //setTimeout(() => {console.log($('#modal .modal-dialog')[0].offsetWidth / 2)}, 1000);
+            // $('.modal').css({opacity: '0'});
+            //if (lastModalWidth === null) lastModalWidth = $('#modal .modal-dialog')[0].offsetWidth / 2;
+            //$('.modal').css({left: 'calc(50vw - ' + $('#modal .modal-dialog')[0].offsetWidth / 2 + 'px)'});
+            //setTimeout(() => {lastModalWidth = $('#modal .modal-dialog')[0].offsetWidth / 2}, 2000);
         },
         moveToDesignatedHallway = (currentID, designatedID) => {
             return new Promise((resolve, reject) => {
