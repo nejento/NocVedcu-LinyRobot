@@ -677,7 +677,7 @@
 </template>
 <template id="template_schody_tk3">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title">Úklidová místnost</h5>
+        <h5 class="modal-title">Schody k robotické laboratoři</h5>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -686,30 +686,56 @@
                     <img class="float-right flip" src="./assets/robot_game/robot.svg"/>
                 </div>
                 <div class="col-6">
+                    <div class="speech-bubble left robot">
+                        <p>Co se to píše tady na té ceduli?</p>
+                    </div>
                     <div class="speech-bubble right">
-                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
+                        <p><strong>ZDE JE ROBOTICKÁ LABORATOŘ</strong></p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
-                    </div>
-                    <div class="speech-bubble left robot">
-                        <p>Ale ne…</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                        <p><strong>Aah!</strong></p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                    <img src="./assets/robot_game/schody_tk3/cedule_roboticka_laborator.svg"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="schody_tk3_outcome">Zpanikařit</button>
+    </div>
+</template>
+<template id="template_schody_tk3_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Schody k robotické laboratoři</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Robot se dal na útěk. Ty hrůzy co si představil byly nepopsatelné.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="assets/robot_game/robot_utika.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="speech-bubble top robot">
+                    <p>Pomoc, pokusy na robotech! Jak je možné, že je tohle v 21. století ještě legální?!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-info text-center" role="alert">
+                    Neztrácíte <strong>žádný</strong> čas
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Utéct</button>
     </div>
 </template>
 <template id="template_a01039_tk3">
