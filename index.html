@@ -106,7 +106,7 @@
 
 <template id="template_a01081_architekt">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title">Úklidová místnost</h5>
+        <h5 class="modal-title">Ateliér architektury</h5>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -116,29 +116,61 @@
                 </div>
                 <div class="col-6">
                     <div class="speech-bubble right">
-                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
+                        <p>A hele, robot. Paráda! Dá se do tebe zapojit fleška, <br>že jo?</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
+                        <p>Dá. Ale proč bys to dělal?</p>
                     </div>
                     <div class="speech-bubble right">
-                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
+                        <p>Potřebuju vyrenderovat model budovy a ten počítač co tu máme je pomalej zasekanej krám.</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>Ale ne…</p>
+                        <p>A já jsem zase hrozně línej. To vyjde nastejno.</p>
                     </div>
                     <div class="speech-bubble right">
-                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                        <p>Ale nekecej. Za pokus to stojí!</p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                    <img src="./assets/robot_game/a01081_architekt/architekt.svg"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="a01081_architekt_outcome">Vyrenderovat</button>
+    </div>
+</template>
+<template id="template_a01081_architekt_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Ateliér architektury</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Dřív, než stačil líný robot namítnout něco dalšího, už měl v hlavě zapojený flash disk.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/a01081_architekt/robot_renderuje.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="speech-bubble top robot">
+                    <p>Vždyť je to nějaká divná kříženina Eifellovky a Ještědu! Tohle tady ti architekti vymýšlí? Kdyby raději nedělali nic, tak, jako se o to snažím já…”</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-danger text-center" role="alert">
+                    Ztrácíte <strong>1</strong> den času
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-delay="2000" data-dismiss="modal">Dokončit</button>
     </div>
 </template>
 <template id="template_a01025_domovnik">
