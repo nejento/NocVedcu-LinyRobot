@@ -608,7 +608,7 @@
 </template>
 <template id="template_a01043_elektrotechnici_kancelar">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title">Úklidová místnost</h5>
+        <h5 class="modal-title">Kancelář elektrotechniků</h5>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -617,30 +617,62 @@
                     <img class="float-right flip" src="./assets/robot_game/robot.svg"/>
                 </div>
                 <div class="col-6">
+                    <div class="speech-bubble left robot">
+                        <p>Haló? Je tam někdo?</p>
+                    </div>
                     <div class="speech-bubble right">
-                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
+                        <p>Zkuste poznat, jestli jsem robot, když mě nevidíte!</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
+                        <p>Jsem robot!</p>
                     </div>
                     <div class="speech-bubble right">
-                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
+                        <p> Špatně, jsem člověk! Počkat … sakra, to jsem neměl prozradit.</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>Ale ne…</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                        <p>…</p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                    <img src="./assets/robot_game/a01043_elektrotechnici_kancelar/dvere.svg"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="a01043_elektrotechnici_kancelar_outcome">Zprocesovat</button>
+    </div>
+</template>
+<template id="template_a01043_elektrotechnici_kancelar_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Kancelář elektrotechniků</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Robot nechápal, co se právě stalo.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/a01043_elektrotechnici_kancelar/robot_je_zmateny.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="speech-bubble top robot">
+                    <p>Ti lidé jsou občas vážně divný druh</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-info text-center" role="alert">
+                    Neztrácíte <strong>žádný</strong> čas
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Vrátit se na misi</button>
     </div>
 </template>
 <template id="template_schody_tk3">
@@ -1369,7 +1401,7 @@
             a01043_elektrotechnici_kancelar: {
                 id: 7,
                 door: {left: 1979, top: 2240},
-                room: {left: 2050, top: 2454},
+                room: {left: 1979, top: 2240},
                 hallway: {left: 1979, top: 2080},
                 hasKey: false
             },
