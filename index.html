@@ -439,7 +439,7 @@
 </template>
 <template id="template_wc">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title">Úklidová místnost</h5>
+        <h5 class="modal-title">Toalety</h5>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -448,30 +448,50 @@
                     <img class="float-right flip" src="./assets/robot_game/robot.svg"/>
                 </div>
                 <div class="col-6">
-                    <div class="speech-bubble right">
-                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
-                    </div>
                     <div class="speech-bubble left robot">
-                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
-                    </div>
-                    <div class="speech-bubble left robot">
-                        <p>Ale ne…</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                        <p>Hmm, „WC“. Vtipná zkratka. Snad tam bude klid.</p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                    <img src="./assets/robot_game/wc/dvere_wc.svg"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="wc_outcome">Navštívit</button>
+    </div>
+</template>
+<template id="template_wc_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Toalety</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Robot otevřel dveře a to co za nimi uviděl ho přimělo se rychle otočit k odchodu.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="assets/robot_game/robot_utika.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="speech-bubble top robot">
+                    <p>Myslím, že moje databáze by se bez takhle detailních informací o lidském vylučování obešla!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-info text-center" role="alert">
+                    Neztrácíte <strong>žádný</strong> čas
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Utéct</button>
     </div>
 </template>
 <template id="template_uklid_1">
