@@ -175,7 +175,7 @@
 </template>
 <template id="template_a01025_domovnik">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title">Úklidová místnost</h5>
+        <h5 class="modal-title">Dílna domovníka</h5>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -185,29 +185,61 @@
                 </div>
                 <div class="col-6">
                     <div class="speech-bubble right">
-                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
+                        <p>Mám pro tebe parádní úkol, robote!</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
+                        <p>A jéje.</p>
                     </div>
                     <div class="speech-bubble right">
-                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
+                        <p>Nějaký trouba mi tady sesypal všechny šrouby do jedné krabice. Potřeboval bych je roztřídit podle velikosti.</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>Ale ne…</p>
+                        <p>No, moc se mi do toho nechce. Ale použiju na to algoritmus Quicksort a bude to hned.</p>
                     </div>
                     <div class="speech-bubble right">
-                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                        <p>No tak paráda! Tak se do toho dej.</p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                    <img src="./assets/robot_game/a01025_domovnik/domovnik.svg"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="a01025_domovnik_outcome">Vytřídit šrouby</button>
+    </div>
+</template>
+<template id="template_a01025_domovnik_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Dílna domovníka</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Líný robot vzápětí ke své nelibosti zjistil, že algoritmy pro třídění dat nejsou tak úplně aplikovatelné na fyzické objekty reálného světa. A na protest již bylo pozdě.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/a01025_domovnik/robot_tridi_srouby.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="speech-bubble top robot">
+                    <p>To mám za to, že jsem souhlasil, že mu pomůžu. Měl jsem ho rovnou někam poslat…</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-danger text-center" role="alert">
+                    Ztrácíte <strong>1</strong> dny času
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-delay="2000" data-dismiss="modal">Dokončit</button>
     </div>
 </template>
 <template id="template_a01020_chemie">
