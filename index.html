@@ -180,7 +180,7 @@
 </template>
 <template id="template_a01020_chemie">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title">Úklidová místnost</h5>
+        <h5 class="modal-title">Chemická laboratoř</h5>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -190,29 +190,58 @@
                 </div>
                 <div class="col-6">
                     <div class="speech-bubble right">
-                        <p>Už zase je potřeba vytřít chodbu a vyluxovat!</p>
+                        <p>Robote, jdeš jako na zavolanou. Zasekla se nám třepačka a máme tady sadu vzorků co potřebují pořádně promíchat.</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>No… tak to udělejte, vždyť jste uklízečka…?</p>
+                        <p>Nebylo by jednodušší sehnat jinou třepačku?</p>
                     </div>
                     <div class="speech-bubble right">
-                        <p>A ty jsi stroj. A k čemu jsou stroje?</p>
+                        <p>Tohle byla poslední třepačka co máme, tu druhou rozbil včera student, který ji dal do mikrovlnky, aby mu během ohřevu míchala oběd…</p>
                     </div>
                     <div class="speech-bubble left robot">
-                        <p>Ale ne…</p>
-                    </div>
-                    <div class="speech-bubble right">
-                        <p>Přece k tomu, aby usnadnili lidem práci. Tak neodmlouvej a šup šup!</p>
+                        <p><i>*povzdech*</i></p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
+                    <img src="./assets/robot_game/a01020_chemie/chemik_zena.svg"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-nextmodal="uklid_1_outcome">Uklidit</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="a01020_chemie_outcome">Protřepat vzorky</button>
+    </div>
+</template>
+<template id="template_a01020_chemie_outcome">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title">Chemická laboratoř</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center lead">Líný robot se neochotně dal do protřepávání vzorků. A brzy zjistil, že „sada vzorků“ znamená něco jako „mnohem víc vzorků, než byste chtěli“.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mx-auto d-block" src="./assets/robot_game/a01020_chemie/robot_trepe.svg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="speech-bubble top robot">
+                    <p>Bych to nechal za trest dělat toho troubu co rozbil tu třepačku. Proč to vždycky odneseme my, roboti?</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="alert alert-danger text-center" role="alert">
+                    Ztrácíte <strong>2</strong> dny času
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-delay="4000" data-dismiss="modal">Dokončit</button>
     </div>
 </template>
 <template id="template_a01014_strojovna">
