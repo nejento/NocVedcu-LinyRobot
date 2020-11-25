@@ -59,7 +59,7 @@
 
 <!-- Begin page content -->
 <main role="main">
-    <img id="robot_head" src="assets/Robot_game/Robot_head.svg" alt="Avatar robota"/>
+    <img id="robot_head" src="assets/robot_game/robot_head.svg" alt="Avatar robota"/>
     <img id="map" src="assets/map.png" usemap="#image-map" alt="Mapa budovy"/>
     <map id="image-map" name="image-map">
         <area rel="tooltip" data-placement="top" id="a01081_architekt" alt="a01081_architekt" title="Ateliér architektury" coords="281,276,1785,997" shape="rect">
@@ -92,15 +92,7 @@
     <!-- modal-xl modal-dialog-centered -->
     <div id="modal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                </div>
-                <div id="level-modal-body" class="modal-body"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
+            <div id="level-modal-content" class="modal-content"></div>
         </div>
     </div>
 
@@ -281,31 +273,31 @@
     </div>
 </template>
 <template id="template_uklid_1">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4">.col-md-4</div>
-            <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
-            <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-9">
-                Level 1: .col-sm-9
-                <div class="row">
-                    <div class="col-8 col-sm-6">
-                        Level 2: .col-8 .col-sm-6
+    <div class="modal-header">
+        <h5 class="modal-title">Úklidová místnost</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img class="float-right flip" src="./assets/robot_game/robot.svg"/>
+                </div>
+                <div class="col-6">
+                    <div class="speech-bubble left robot">
+                        <p>Čus</p>
                     </div>
-                    <div class="col-4 col-sm-6">
-                        Level 2: .col-4 .col-sm-6
+                    <div class="speech-bubble right">
+                        <p>Jak to de?</p>
                     </div>
+                </div>
+                <div class="col">
+                    <img src="./assets/robot_game/uklid/uklizecka.svg"/>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
     </div>
 </template>
 <template id="template_a01042_elektrotechnici_kancelar">
@@ -860,8 +852,7 @@
             left: 1069,
             top: 2277
         },
-        moving = false,
-        lastModalWidth = null;
+        moving = false;
     const coords = {
             a01081_architekt: {
                 id: 0,
@@ -1197,25 +1188,20 @@
             }
         },
         showModal = (id) => {
-            //console.log($('#modal .modal-dialog')[0].offsetWidth / 2);
-            let clone = document.getElementById('template_' + id).content.cloneNode(true);
-            $('#level-modal-body').empty();
-            $('#level-modal-body').append(clone);
-
-            //$('#modal').css({left: 'calc(50vw - ' + ($('#modal .modal-dialog')[0].offsetWidth / 2) + 'px)'});
+            let clone = document.getElementById('template_' + id).content.cloneNode(true),
+                timer = 0;
+            $('#level-modal-content').empty();
+            $('#level-modal-content').append(clone);
             $('#modal').modal('show');
-            /*setTimeout(() => {
-                $('#modal').css({left: 'calc(50vw - ' + ($('#modal .modal-dialog')[0].offsetWidth / 2) + 'px)'});
-                console.log("   reset", $('#modal .modal-dialog')[0].offsetWidth / 2);
-            }, 200);*/
-            /*$('#modal').on('hidden.bs.modal', function (e) {
-                $('#modal').css({left: 'calc(50vw - ' + ($('#modal .modal-dialog')[0].offsetWidth / 2) + 'px)'})
-            });*/
-            //setTimeout(() => {console.log($('#modal .modal-dialog')[0].offsetWidth / 2)}, 1000);
-            // $('.modal').css({opacity: '0'});
-            //if (lastModalWidth === null) lastModalWidth = $('#modal .modal-dialog')[0].offsetWidth / 2;
-            //$('.modal').css({left: 'calc(50vw - ' + $('#modal .modal-dialog')[0].offsetWidth / 2 + 'px)'});
-            //setTimeout(() => {lastModalWidth = $('#modal .modal-dialog')[0].offsetWidth / 2}, 2000);
+            $('#modal').on('shown.bs.modal', (e) => {
+                console.log("called bubble");
+                $('#modal').find('.speech-bubble').each((index, element) => {
+                    setTimeout(() => $(element).addClass("bubble-show"), timer);
+                    //$(element).addClass("bubble-show").delay(timer);
+                    timer += 500;
+                });
+            });
+
         },
         moveToDesignatedHallway = (currentID, designatedID) => {
             return new Promise((resolve, reject) => {
