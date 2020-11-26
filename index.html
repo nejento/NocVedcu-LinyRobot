@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="Minihra Líný robot">
     <meta name="author" content="Jana Kolaja Ehlerová, Michal Puchrík, Zora Krykorková, Kristián Jacik">
     <title>Líný robot &bullet; Noc vědců</title>
+    <link rel="icon" href="./assets/favicon.png" type="image/png">
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -40,9 +41,10 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container justify-content-start">
-            <a href="//www.fm.tul.cz" class="mr-auto" rel="external"><img src="./assets/logo-fm-cmyk-cz.png" height="50 em" alt="Logo FM TUL"/></a>
-            <a href="//www.tojeit.cz" rel="external"><img src="./assets/tojeit.png" height="50 em" alt="Logo ToJeIt.cz"/></a>
-            <a href="//www.nocvedcu.cz/organizace/technicka-univerzita-v-liberci" class="ml-3" rel="external"><img src="./assets/nocvedcu-hero.svg" height="50 em" alt="Logo Noc vědců"/></a>
+            <img class="mr-auto" src="./assets/logo.svg" height="50 em" alt="Logo Líný robot"/>
+            <a href="//www.tojeit.cz" rel="external"><img src="./assets/tojeit.png" class="right-logo" height="50 em" alt="Logo ToJeIt.cz"/></a>
+            <a href="//www.fm.tul.cz" rel="external"><img src="./assets/logo-fm-cmyk-cz.png" class="right-logo" height="50 em" alt="Logo FM TUL"/></a>
+
         </div>
     </nav>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ddd;">
@@ -105,8 +107,9 @@
 </main>
 
 <footer class="footer">
-    <div class="container">
-        <span class="text-muted">2020</span>
+    <div class="container d-flex justify-content-end">
+        <span class="text-muted mr-auto">2020</span>
+        <a href="//www.nocvedcu.cz/organizace/technicka-univerzita-v-liberci" class="ml-3" rel="external"><img src="./assets/nocvedcu-hero.svg" height="50 em" alt="Logo Noc vědců"/></a>
     </div>
 </footer>
 
@@ -2036,7 +2039,6 @@
                 });
             } else {
                 if (coords[currentRoom].id === coords[id].id) {
-                    alert("Jsi ve stejné místnosti"); //Předělat na toast
                     moving = false;
                 } else {
                     console.log("Moving to door");
@@ -2130,7 +2132,7 @@
                 if (!keyFound && coords[id].hasKey) {
                     keyFound = true;
                     if (finalVisited) {
-                        $("#task").html("Vrať se do k zamčené místnosti a odemkni");
+                        $("#task").html("Vrať se do zamčené místnosti a odemkni");
                     } else {
                         $("#task").html("Najdi dveře, kam klíč patří");
                     }

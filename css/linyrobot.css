@@ -17,6 +17,10 @@ h1, .header-font {
   font-weight: 700;
 }
 
+.right-logo {
+  margin-left: 1.5em;
+}
+
 /*
 main > .container {
   padding: 60px 15px 0;
