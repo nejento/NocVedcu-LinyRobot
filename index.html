@@ -109,7 +109,7 @@
 <footer class="footer">
     <div class="container d-flex justify-content-end">
         <span class="text-muted mr-auto">2020</span>
-        <a href="//www.nocvedcu.cz/organizace/technicka-univerzita-v-liberci" class="ml-3" rel="external"><img src="./assets/nocvedcu-hero.svg" height="50 em" alt="Logo Noc vědců"/></a>
+        <a href="//www.nocvedcu.cz/organizace/technicka-univerzita-v-liberci" class="ml-3" rel="external"><img src="./assets/nocvedcu-hero.svg" height="40 em" alt="Logo Noc vědců"/></a>
     </div>
 </footer>
 
@@ -1043,7 +1043,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p class="text-center congrats">Dokázali jste to!</strong></p>
+                    <p class="text-center congrats">Dokázali jste to!</p>
                 </div>
             </div>
             <div class="row">
@@ -1059,7 +1059,7 @@
         </div>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Zobrazit výsledky</button>
+        <button type="button" class="btn btn-primary" data-nextmodal="endscreen" data-dismiss="modal">Zobrazit výsledky</button>
     </div>
 </template>             <!-- Odemčená místnost -->
 <template id="template_a01073_elektrotechnici_kancelar_nokey">
@@ -1716,6 +1716,44 @@
         <button type="button" class="btn btn-primary" data-delay="2000" data-dismiss="modal">Vyklopýtat se ven</button>
     </div>
 </template>
+<template id="template_endscreen">
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title"><strong>Blahopřejeme! Našli jste robotovi kout k odpočinku!</strong></h5>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row mx-5 mb-3">
+                <div class="col-md-5">
+                    <img class="img-fluid float-right" src="./assets/robot_standby.png" style="max-height: 180px;">
+                </div>
+                <div class="col align-self-center">
+                    <p id="time-info" class="text-center lead final-score">Hledáním jste strávili</p>
+                    <p id="time-spent" class="text-center congrats final-score"></p>
+                    <p id="tease" class="text-center"></p>
+                </div>
+            </div>
+            <div class="row">
+                <p class="text-center lead">
+                    <strong>Zaujala Vás robotika? Programování, chemie nebo architektura?</strong><br>
+                    Tak rozhodně navštivte tyto weby!
+                </p>
+            </div>
+            <div class="row d-flex align-items-center mb-2">
+                <div class="text-center">
+                    <a href="//www.tojeit.cz/"><img class="img-fluid mr-3" src="./assets/tojeit_color.png" style="max-height: 5em"></a>
+                    <a href="//www.fm.tul.cz/"><img class="img-fluid" src="./assets/logo-fm-cmyk-cz.png" style="max-height: 4em"></a>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <p class="text-center lead">Nebo prozkoumejte další projekty v akci Noc vědců</p>
+                <button type="button" class="btn btn-link show" onclick="location.href='//www.nocvedcu.cz/organizace/technicka-univerzita-v-liberci';" data-dismiss="modal">Zpět na Noc vědců</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" onClick="window.location.reload();" data-dismiss="modal">Zkusím to stihnout rychleji!</button>
+    </div>
+</template>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="./js/jquery-3.5.1.js"><\/script>')</script>
@@ -2134,6 +2172,20 @@
                         $(element).append('<div class="alert alert-success text-center" role="alert"><img class="mr-2" style="width: 2em; height: auto" src="./assets/robot_game/keys/klic.svg">Před místností jsi objevil klíč! ' + (finalVisited ? "Nebude fungovat na ty zamčené dveře?" : "No jo, ale co odemyká?") + '</div>');
                     });
                 }
+            }
+
+            if (id === "endscreen") {
+                let doba;
+                if (timeSpent === 0) {
+                    $("#time-info").html("Hledáním jste nestrávili");
+                    doba = "žádný čas navíc!";
+                }
+                else if (timeSpent % 1 !== 0) doba = timeSpent + " dne!";
+                else if (timeSpent === 1) doba = "jeden den!";
+                else if (timeSpent > 1 && timeSpent < 5) doba = timeSpent + " dny!";
+                else doba = timeSpent + " dnů!";
+                $("#time-spent").html(doba);
+                if (timeSpent !== 0) $("#tease").html("(zkusíte to stihnout rychleji?)");
             }
 
             $('#modal').modal('show');

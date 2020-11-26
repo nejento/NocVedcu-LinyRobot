@@ -1,6 +1,5 @@
 /* Custom page CSS
 -------------------------------------------------- */
-/* Not required for template or sticky footer method. */
 
 body {
   font-family: 'Manrope', sans-serif !important;
@@ -191,3 +190,16 @@ area {
   font-style: italic;
   letter-spacing: 0.1em;
 }
+
+.final-score {
+  margin-bottom: 0rem;
+}
+
+#time-info {
+  font-size: 2em;
+}
+
+#time-spent {
+  font-size: 3em;
+}
+
