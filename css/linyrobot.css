@@ -56,6 +56,10 @@ main > img#robot_head {
   transform: scaleX(-1);
 }
 
+area {
+  cursor: pointer;
+}
+
 /* Speech bubbles */
 .speech-bubble {
   position: relative;
