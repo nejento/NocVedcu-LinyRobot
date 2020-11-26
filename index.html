@@ -1728,7 +1728,6 @@
      * Přidat časomíru, jak dlouho trvalo od začátku hru dohrát
      * Přidat animaci chůze
      * Přidat uvítací modal
-     * Cílová místnost musí být nejprve uzamčena! Cílová místnost: a01073_elektrotechnici_kancelar
      * Omezit volání jQuery
      * Tuto místnost jsi již navštívil
      * Možná přidat img-fluid ke všem modalům, otestovat chování na tabletu
@@ -1993,25 +1992,18 @@
                         ).then(() => {
                             console.log("Moved to door, moving to room");
                             currentCoords = coords[id].door;
-                            if (id === "a01073_elektrotechnici_kancelar" && coords.a01073_elektrotechnici_kancelar.locked) { //Pokud je místnost uzamčena
-                                alert("Místnost je uzamčena, musíš nejprve najít klíč");
-                                console.log("Room is locked");
+                            moveHead(
+                                imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
+                                imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
+                                imageLeft + ((keyFound && id === "a01073_elektrotechnici_kancelar" ? coords[id].room.left : coords[id].door.left) * scale.width) - ($('#robot_head').width() / 2), //newleft
+                                imageTop + ((keyFound && id === "a01073_elektrotechnici_kancelar" ? coords[id].room.top : coords[id].door.top) * scale.height) - ($('#robot_head').height() / 2) //oldtop
+                            ).then(() => {
+                                console.log("Moved to room");
+                                currentCoords = (keyFound && id === "a01073_elektrotechnici_kancelar" ? coords[id].room : coords[id].door);
                                 currentRoom = id;
                                 moving = false;
-                            } else {
-                                moveHead(
-                                    imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
-                                    imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
-                                    imageLeft + (coords[id].room.left * scale.width) - ($('#robot_head').width() / 2), //newleft
-                                    imageTop + (coords[id].room.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
-                                ).then(() => {
-                                    console.log("Moved to room");
-                                    currentCoords = coords[id].room;
-                                    currentRoom = id;
-                                    moving = false;
-                                    showModal(id);
-                                });
-                            }
+                                showModal(id);
+                            });
                         });
                     });
                 });
@@ -2048,25 +2040,18 @@
                                 ).then(() => {
                                     console.log("Moved to door, moving to room");
                                     currentCoords = coords[id].door;
-                                    if (id === "a01073_elektrotechnici_kancelar" && coords.a01073_elektrotechnici_kancelar.locked) { //Pokud je místnost uzamčena
-                                        alert("Místnost je uzamčena, musíš nejprve najít klíč");
-                                        console.log("Room is locked");
+                                    moveHead(
+                                        imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
+                                        imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
+                                        imageLeft + ((keyFound && id === "a01073_elektrotechnici_kancelar" ? coords[id].room.left : coords[id].door.left) * scale.width) - ($('#robot_head').width() / 2), //newleft
+                                        imageTop + ((keyFound && id === "a01073_elektrotechnici_kancelar" ? coords[id].room.top : coords[id].door.top) * scale.height) - ($('#robot_head').height() / 2) //oldtop
+                                    ).then(() => {
+                                        console.log("Moved to room");
+                                        currentCoords = (keyFound && id === "a01073_elektrotechnici_kancelar" ? coords[id].room : coords[id].door);
                                         currentRoom = id;
                                         moving = false;
-                                    } else {
-                                        moveHead(
-                                            imageLeft + (currentCoords.left * scale.width) - ($('#robot_head').width() / 2), //oldleft
-                                            imageTop + (currentCoords.top * scale.height) - ($('#robot_head').height() / 2), //oldtop
-                                            imageLeft + (coords[id].room.left * scale.width) - ($('#robot_head').width() / 2), //newleft
-                                            imageTop + (coords[id].room.top * scale.height) - ($('#robot_head').height() / 2) //oldtop
-                                        ).then(() => {
-                                            console.log("Moved to room");
-                                            currentCoords = coords[id].room;
-                                            currentRoom = id;
-                                            moving = false;
-                                            showModal(id);
-                                        });
-                                    }
+                                        showModal(id);
+                                    });
                                 });
                             });
                         });
@@ -2089,19 +2074,19 @@
                 if (keyFound) {
                     if (finalVisited) {
                         //Máme klíč a v místnosti jsme byli
-                        roomID = 'a01073_elektrotechnici_kancelar_visited_haskey';
+                        roomID = "a01073_elektrotechnici_kancelar_visited_haskey";
                     } else {
                         //Máme klíč a v místnosti jsme nebyli
-                        roomID = 'a01073_elektrotechnici_kancelar_haskey';
+                        roomID = "a01073_elektrotechnici_kancelar_haskey";
                         finalVisited = true;
                     }
                 } else {
                     if (finalVisited) {
                         //Nemáme klíč a v místnosti jsme byli
-                        roomID = 'a01073_elektrotechnici_kancelar_visited_nokey';
+                        roomID = "a01073_elektrotechnici_kancelar_visited_nokey";
                     } else {
                         //Nemáme klíč a v místnosti jsme nebyli
-                        roomID = 'a01073_elektrotechnici_kancelar_nokey';
+                        roomID = "a01073_elektrotechnici_kancelar_nokey";
                         finalVisited = true;
                     }
                 }
@@ -2113,13 +2098,12 @@
             $('#level-modal-content').empty();
             $('#level-modal-content').append(clone);
 
-            if (id !== "a01073_elektrotechnici_kancelar") {
+            if (id !== "a01073_elektrotechnici_kancelar" && Object.keys(coords).includes(id)) {
                 if (!keyFound && coords[id].hasKey) {
                     keyFound = true;
-                    console.log("Found key!");
-                    // $('#level-modal-content').find('.modal-body').each((id, element) => {
-                    //     $(element).append('<div class="alert alert-success text-center" role="alert"><img class="mr-2" style="width: 2em; height: auto" src="./assets/robot_game/keys/klic.svg">Před místností jsi objevil klíč! ' + (finalVisited ? "Nebude fungovat na ty zamčené dveře?" : "No jo, ale co odemyká?") + '</div>');
-                    // });
+                    $('#level-modal-content').find('.modal-body').each((id, element) => {
+                        $(element).append('<div class="alert alert-success text-center" role="alert"><img class="mr-2" style="width: 2em; height: auto" src="./assets/robot_game/keys/klic.svg">Před místností jsi objevil klíč! ' + (finalVisited ? "Nebude fungovat na ty zamčené dveře?" : "No jo, ale co odemyká?") + '</div>');
+                    });
                 }
             }
 
@@ -2128,12 +2112,9 @@
                 console.log("called bubble");
                 $('#modal').find('.speech-bubble').each((id, element) => {
                     setTimeout(() => $(element).addClass("bubble-show"), timer);
-                    //$(element).addClass("bubble-show").delay(timer);
                     timer += 500;
                 })
                 $('#level-modal-content').find('button[data-nextmodal]').each((id, element) => {
-                    //console.log('found', element);
-                    //console.log($('#modal button[data-nextmodal]'));
                     $('#modal button[data-nextmodal]').one('click', () => {
                         $('#modal').modal('hide');
                         $('#modal').one('hidden.bs.modal', (e) => {
