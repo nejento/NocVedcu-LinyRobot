@@ -31,6 +31,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500;700&family=Manrope:wght@200;300;400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/linyrobot.css">
+    <script src="js/confetti.min.js"></script>
 
 </head>
 
@@ -1043,11 +1044,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="speech-bubble top robot">
-                    <p>Hmpf… prej usnadnit práci… dřít tady za ně, to chtějí abych dělal!</p>
-                </div>
-            </div>
-            <div class="row">
                 <div class="alert alert-success text-center" role="alert">
                     <strong>Dokázali jste to!</strong>
                 </div>
@@ -1717,6 +1713,7 @@
 <script>window.jQuery || document.write('<script src="./js/jquery-3.5.1.js"><\/script>')</script>
 <script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="./js/imageMapResizer.min.js"></script>
+<script type="text/javascript" src="./js/confetti.min.js"></script>
 <script>
     /**
      * TODO:
@@ -2104,7 +2101,7 @@
 
             $('#modal').modal('show');
             $('#modal').on('shown.bs.modal', (e) => {
-                console.log("called bubble");
+                //console.log("called bubble");
                 $('#modal').find('.speech-bubble').each((id, element) => {
                     setTimeout(() => $(element).addClass("bubble-show"), timer);
                     timer += 500;
@@ -2120,6 +2117,11 @@
                 $('#modal').find('button').each((id, element) => {
                     setTimeout(() => $(element).addClass("show"), timer + ($(element).data('delay') ? $(element).data('delay') : 0));
                 });
+
+                if (id === "a01073_elektrotechnici_kancelar_final") {
+                    confetti.start(2000);
+                }
+
             });
         },
         moveToDesignatedHallway = (currentID, designatedID) => {
