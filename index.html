@@ -50,10 +50,15 @@
             <span class="navbar-brand header-font">Aktuální úkol:</span>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <span class="nav-link">Promíchej zkumavky</span>
+                    <span id="task" class="nav-link">Najdi místo k odpočinku</span>
                 </li>
             </ul>
-            <span class="navbar-text">Navbar text with an inline element</span>
+            <span class="navbar-brand header-font">Ztracených dnů:</span>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <span id="time" class="nav-link">0</span>
+                </li>
+            </ul>
         </div>
     </nav>
 </header>
@@ -1731,7 +1736,8 @@
         },
         moving = false,
         finalVisited = false,
-        keyFound = false;
+        keyFound = false,
+        timeSpent = 0;
     const coords = {
             a01081_architekt: {
                 id: 0,
@@ -2079,6 +2085,7 @@
                     } else {
                         //Nemáme klíč a v místnosti jsme nebyli
                         roomID = "a01073_elektrotechnici_kancelar_nokey";
+                        $("#task").html("Najdi klíč k odemknutí místnosti");
                         finalVisited = true;
                     }
                 }
@@ -2093,6 +2100,11 @@
             if (id !== "a01073_elektrotechnici_kancelar" && Object.keys(coords).includes(id)) {
                 if (!keyFound && coords[id].hasKey) {
                     keyFound = true;
+                    if (finalVisited) {
+                        $("#task").html("Vrať se do k zamčené místnosti a odemkni");
+                    } else {
+                        $("#task").html("Najdi dveře, kam klíč patří");
+                    }
                     $('#level-modal-content').find('.modal-body').each((id, element) => {
                         $(element).append('<div class="alert alert-success text-center" role="alert"><img class="mr-2" style="width: 2em; height: auto" src="./assets/robot_game/keys/klic.svg">Před místností jsi objevil klíč! ' + (finalVisited ? "Nebude fungovat na ty zamčené dveře?" : "No jo, ale co odemyká?") + '</div>');
                     });
@@ -2119,6 +2131,7 @@
                 });
 
                 if (id === "a01073_elektrotechnici_kancelar_final") {
+                    $("#task").html("Prospi se :)");
                     confetti.start(2000);
                 }
 
