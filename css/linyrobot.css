@@ -174,3 +174,12 @@ main > img#robot_head {
   pointer-events: auto !important;
   transition: opacity 0.3s ease-in;
 }
+
+.congrats {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  color: #000000;
+  font-size: 3em;
+  font-style: italic;
+  letter-spacing: 0.1em;
+}
