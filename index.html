@@ -2141,7 +2141,7 @@
             }
 
             $('#modal').modal('show');
-            $('#modal').on('shown.bs.modal', (e) => {
+            $('#modal').one('shown.bs.modal', (e) => {
                 //console.log("called bubble");
                 $('#modal').find('.speech-bubble').each((id, element) => {
                     setTimeout(() => $(element).addClass("bubble-show"), timer);
