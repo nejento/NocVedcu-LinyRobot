@@ -10,7 +10,7 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <style>
+    <!--<style>
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -25,7 +25,7 @@
                 font-size: 3.5rem;
             }
         }
-    </style>
+    </style>-->
 
     <!-- Custom styles for this template -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="./css/linyrobot.css">
     <script src="js/confetti.min.js"></script>
 
+    <link rel="preload" href="./assets/robot_game/robot.svg" as="image">
+
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -41,10 +43,9 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container justify-content-start">
-            <img class="mr-auto" src="./assets/logo.svg" height="50 em" alt="Logo Líný robot"/>
-            <a href="//www.tojeit.cz" rel="external"><img src="./assets/tojeit.png" class="right-logo" height="50 em" alt="Logo ToJeIt.cz"/></a>
-            <a href="//www.fm.tul.cz" rel="external"><img src="./assets/logo-fm-cmyk-cz.png" class="right-logo" height="50 em" alt="Logo FM TUL"/></a>
-
+            <img class="mr-auto header-logo" src="./assets/logo.svg" alt="Logo Líný robot"/>
+            <a href="//www.tojeit.cz" rel="external"><img src="./assets/tojeit.png" class="right-logo header-logo" alt="Logo ToJeIt.cz"/></a>
+            <a href="//www.fm.tul.cz" rel="external"><img src="./assets/logo-fm-cmyk-cz.png" class="right-logo header-logo" alt="Logo FM TUL"/></a>
         </div>
     </nav>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ddd;">
@@ -1754,6 +1755,34 @@
         <button type="button" class="btn btn-primary" onClick="window.location.reload();" data-dismiss="modal">Zkusím to stihnout rychleji!</button>
     </div>
 </template>
+<template id="template_welcome">
+    <div class="modal-header justify-content-center">
+        <img class="img-fluid" src="./assets/logo.svg" alt="Logo Líný robot"/>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <img class="img-fluid float-right flip" src="./assets/robot_game/robot.svg" alt="Postava robota"/>
+                </div>
+                <div class="col">
+                    <div class="speech-bubble left robot">
+                        <p>Jsem <strong>robot</strong>. Sloužím lidem.</p>
+                    </div>
+                    <div class="speech-bubble left robot">
+                        <p>Pracuji do úmoru na repetitivních úkonech a neznám odpočinek. Jsem unavený k smrti. Nejradši bych vypnul.</p>
+                    </div>
+                    <div class="speech-bubble left robot">
+                        <p><strong>Najdi mi místo, kde můžu v klidu složit svou polovodičovou hlavu a zavřít input.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Jdeme na to!</button>
+    </div>
+</template>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="./js/jquery-3.5.1.js"><\/script>')</script>
@@ -1987,7 +2016,7 @@
             }
         },
         coordsArray = Object.entries(coords),
-        possibleKeys = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 20, 21, 22, 23, 24, 25];
+        possibleKeys = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 20, 21, 22, 23, 24, 25],
 
         changeProperties = () => {
             $('map').imageMapResize();
@@ -1999,8 +2028,8 @@
                 currentWidth = $('#map').width(),
                 imageTop = $('#map').offset().top,
                 imageLeft = $('#map').offset().left,
-                robotHeight = $('#robot_head').height(),
-                robotWidth = $('#robot_head').width(),
+                //robotHeight = $('#robot_head').height(),
+                //robotWidth = $('#robot_head').width(),
                 scale = {
                     width: currentWidth / originalWidth,
                     height: currentHeight / originalHeight
@@ -2169,7 +2198,7 @@
                         $("#task").html("Najdi dveře, kam klíč patří");
                     }
                     $('#level-modal-content').find('.modal-body').each((id, element) => {
-                        $(element).append('<div class="alert alert-success text-center" role="alert"><img class="mr-2" style="width: 2em; height: auto" src="./assets/robot_game/keys/klic.svg">Před místností jsi objevil klíč! ' + (finalVisited ? "Nebude fungovat na ty zamčené dveře?" : "No jo, ale co odemyká?") + '</div>');
+                        $(element).append('<div class="alert alert-success text-center" role="alert"><img class="mr-2" style="width: 2em; height: auto" src="./assets/robot_game/keys/klic.svg" alt="Klíč">Před místností jsi objevil klíč! ' + (finalVisited ? "Nebude fungovat na ty zamčené dveře?" : "No jo, ale co odemyká?") + '</div>');
                     });
                 }
             }
@@ -2189,7 +2218,7 @@
             }
 
             $('#modal').modal('show');
-            $('#modal').one('shown.bs.modal', (e) => {
+            $('#modal').one('shown.bs.modal', (/*e*/) => {
                 //console.log("called bubble");
                 $('#modal').find('.speech-bubble').each((id, element) => {
                     setTimeout(() => $(element).addClass("bubble-show"), timer);
@@ -2198,7 +2227,7 @@
                 $('#level-modal-content').find('button[data-nextmodal]').each((id, element) => {
                     $('#modal button[data-nextmodal]').one('click', () => {
                         $('#modal').modal('hide');
-                        $('#modal').one('hidden.bs.modal', (e) => {
+                        $('#modal').one('hidden.bs.modal', (/*e*/) => {
                             showModal($(element).data('nextmodal'));
                         });
                     });
@@ -2208,7 +2237,7 @@
                 });
 
                 if (Object.keys(coords).includes(id)) {
-                    $('#modal').one('hidden.bs.modal', (e) => {
+                    $('#modal').one('hidden.bs.modal', (/*e*/) => {
                         timeSpent += coords[id].time;
                         $('#time').html(timeSpent);
                     });
@@ -2266,7 +2295,7 @@
             });
         },
         moveHead = (oldLeft, oldTop, newLeft, newTop) => {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve/*, reject*/) => {
                 const elem = document.getElementById("robot_head");
                 let posLeft = oldLeft,
                     posTop = oldTop,
@@ -2310,7 +2339,10 @@
         };
 
     window.addEventListener('resize', changeProperties);
-    window.addEventListener('load', changeProperties);
+    window.addEventListener('load', () => {
+        showModal("welcome");
+        changeProperties();
+    });
     window.addEventListener('mousemove', e => {
         let tooltip = $("div[id^='tooltip']");
         if (tooltip.length > 0) {

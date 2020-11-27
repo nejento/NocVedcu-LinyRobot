@@ -20,6 +20,9 @@ h1, .header-font {
   margin-left: 1.5em;
 }
 
+.header-logo {
+  height: 50em;
+}
 /*
 main > .container {
   padding: 60px 15px 0;
