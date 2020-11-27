@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Manrope:wght@200;300;400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/sticky-footer-navbar.css">
+    <link rel="stylesheet" href="./css/linyrobot.css">
 
 </head>
 
@@ -39,39 +39,40 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container justify-content-start">
-                <a href="//www.fm.tul.cz" alt="Fakulta mechatroniky, informatiky a mezioborových studií Technické univerzity v Liberci" class="mr-auto" rel="external"><img src="assets/logo-fm-cmyk-cz.png" height="50 em" alt="Logo FM TUL"/></a>
-                <a href="//www.tojeit.cz" alt="ToJeIT.cz" rel="external"><img src="assets/tojeit.png" height="50 em" alt="Logo ToJeIt.cz"/></a>
-                <a href="//www.nocvedcu.cz/organizace/technicka-univerzita-v-liberci" alt="Noc vědců" class="ml-3" rel="external"><img src="assets/nocvedcu-hero.svg" height="50 em" alt="Logo Noc vědců"/></a>
+                <img class="mr-auto header-logo" src="./assets/logo.svg" alt="Logo Líný robot"/>
+                <a href="//www.tojeit.cz" rel="external"><img src="./assets/tojeit.png" class="right-logo header-logo" alt="Logo ToJeIt.cz"/></a>
+                <a href="//www.fm.tul.cz" rel="external"><img src="./assets/logo-fm-cmyk-cz.png" class="right-logo header-logo" alt="Logo FM TUL"/></a>
             </div>
         </nav>
     </header>
 
     <!-- Begin page content -->
-    <main role="main" class="flex-shrink-0">
+    <main role="main" class="flex-shrink-0" style="background-color: #fff">
         <div class="container">
             <div class="d-flex flex-row flex-wrap flex-md-nowrap mb-3">
                 <div class="p-2">
                     <h1 class="mt-5">Líný robot ještě spí.</h1>
                     <p class="lead">Líný robot se připravuje na svoji misi, kterou chce mít co nejdříve splněnou.<br>
                         Jakmile nastane správný čas, pomozte robotovi splnit jeho práci, aby mohl co nejdříve opět dobíjet své baterky</p>
-                    <p>Mise robota začíná 27. listopadu 2020!</p>
+                    <p>Mise robota začíná 27. listopadu 2020 v 17:00!</p>
                 </div>
                 <div class="p-2">
-                    <img src="assets/robot_standby.png" class="float-right img-fluid" alt="Spící robot"/>
+                    <img src="./assets/robot_standby.png" class="float-right img-fluid" alt="Spící robot"/>
                 </div>
             </div>
         </div>
     </main>
 
-<!--    <footer class="footer mt-auto py-3">
-        <div class="container">
-            <span class="text-muted">2020</span>
+    <footer class="footer">
+        <div class="container d-flex justify-content-end">
+            <span class="text-muted mr-auto">2020</span>
+            <a href="//www.nocvedcu.cz/organizace/technicka-univerzita-v-liberci" class="ml-3" rel="external"><img src="./assets/nocvedcu-hero.svg" height="40 em" alt="Logo Noc vědců"/></a>
         </div>
-    </footer>-->
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="/js/jquery-3.5.1.js"><\/script>')</script>
-    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script>window.jQuery || document.write('<script src="./js/jquery-3.5.1.js"><\/script>')</script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
